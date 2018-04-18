@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	var jumin = prompt("주민번호 형식 : 800000-1122333", "주민번호를 입력하세요");
+	var len = jumin.length;
+	if(len !=14 || jumin.charAt(6) != '-'){
+		alert('주민번호 형식이 잘못되었습니다.');
+	}
+	
+	var s = jumin.charAt(7);
+	
+	var xx = "";
+	switch(s){
+	case '1':xx="남성";break;
+	case '2':xx="여성";break;
+	}
+	
+	document.write("당신의 성별:"+xx);
+</script>
+</body>
+</html>

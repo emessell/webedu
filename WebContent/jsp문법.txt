@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<%-- [JSP 태그 종류]
+	
+	지시자(DIRECTIVE): <%@ %> : 페이지 속성
+	
+	[지시자의 3가지 종류]
+	1. PAGE 지시자
+		-INFO: 페이지를 설명해주는 문자열 예) <%@page info = "copyrights by~" %>
+		-language : jsp 페이지에서 사용할 언어를 지정
+			예) <%@page import = "java.util.*, java.sql.*" %>
+			<%@page import = "java.io.*" %>
+		
+		** JSP 페이지가 자동으로 임포트하는 패키지
+		- javax.servlet
+		- javax.servlet.jsp
+		- javax.servlet.http
+		- session: httpSession 속성의 사용여부를 지정
+		예) <%@page session = "false" %>
+		- buffer : jsp 페이지의 출력 크기를 kb단위로 지정하는 속성, 기본값 8kb
+		- autoFlush : 기본값은 true이고, 버퍼가 다 찼을 경우 자동적으로 버퍼를 비우는 속성
+		- isThreadSafe : 여러개의 요청을 처리할지 여부를 결정(잘 사용 안함)
+		- errPage : 예외처리를 할 페이지의 url 지정
+		- isErrorPage : 여러 페이지를 담당하는 페이지인지 여부를 지정하는 속성
+		- pageEncoding : contentType charset과 같다.
+	
+	2. include 지시자 : 현재의 jsp페이지에 다른 jsp 페이지나 html 문서를 불러와서 현재 페이지의 일부로 사용할 때 이용
+		예) <%@include file = "aaa.jsp" %>
+	
+	3. taglib 지시자 : 액션을 사용할 때 필요한 지시자.
+		- 액션은
+		ㄱ. 액션을 사용할 때 기본적으로 사용할 수 있는 액션이 있고(표준 태그)
+		ㄴ. 액션이 속한 라이브러리를 설치해야만 사용할 수 있는 액션이 있다.(커스텀 태그)
+		taglib 지시자는 'ㄴ'의 경우 필요하다.
+		예) <%@taglib profix = "c" url="http://oracle.com/jsp/jstl/core" %>
+		
+		[스크립팅 요소] (스크립틀릿, 익스프레션, 선언부)
+		스크립틀릿 : <%@ %> : 자바코드가 온다.
+		익스프레션: <%= %> : 결과값 출력.
+		선언부 : <%! %> : 변수, 메소드 선언
+		
+		[주석]
+		[액션태그]: <jsp.action> </jsp.action>: 자바빈 연결
+		[JSP의 내부 객체]
+		내부 객체: 객체를 생성하지 않고 바로 사용할 수 있는 객체를 의미
+		JSP에서 제공되는 내부객체는 JSP 컨테이너에 의해 Servlet으로 변환될 때 자동으로 객체가 생성됨.
+		
+		--내부 객체 종류--
+		입출력 객체: request - doGet, doPost 메서드의 첫번째 파라미터와 동일한 역할
+				  response - doGet, doPost 메서드의 두번째 파라미터와 동일한 역할
+		서블릿 객체: page - jsp페이지로부터 생성된 서블릿
+					config - jsp페이지의 구성정보를 가져오는 기능
+		세션 객체: session - 세션과 관련된 기능
+		예외 객체: exception - 예외처리와 관련된 기능  --%>
+</body>
+</html>
