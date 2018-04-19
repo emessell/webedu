@@ -14,17 +14,47 @@ public class MemberDAO {
 	ResultSet rs;
 	
 	public MemberDAO(){
-		conn = DataBaseUtil.getConnection();
+		//conn = DataBaseUtil.getConnection();
 	}
 	
-	public int insertMember(MemDTO member){
-
-		int cnt = 0;
+	//check id
+	public SqlResult checkId(String id) {
+		
+		SqlResult sqlresult = null;
+		StringBuffer sql = new StringBuffer();
+		sql.append("insert into member (id,passwd,name,birth,phone) values (?,?,?,?,?)");
+		
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sqlresult = SqlResult.MEM_EXIST;
+			}else {
+				sqlresult = SqlResult.MEM_NONEXIST;
+			}
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e,this.getClass().getName()+":int checkId(String id)");
+		}finally {
+			DataBaseUtil.close(conn,pstmt,rs);
+		}
+		
+		
+		return sqlresult;
+		
+	}
+	
+	//insert member
+	public SqlResult insertMember(MemDTO member){
+		
+		int cnt=0;
+		SqlResult sqlresult = null;
 		StringBuffer sql = new StringBuffer();
 		sql.append("insert into member ").append("(id,passwd,name,birth,phone) ")
 				.append("values (?,?,?,?,?)");
 		try {
-
+			conn = DataBaseUtil.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
@@ -33,6 +63,7 @@ public class MemberDAO {
 			pstmt.setString(5, member.getPhone());
 
 			cnt = pstmt.executeUpdate();
+			sqlresult = SqlResult.MEM_JOIN_SUCCESS;
 
 		} catch (SQLException e) {
 			DataBaseUtil.printSQLException(e, "int insertMember(MemberDTO member)");
@@ -40,7 +71,7 @@ public class MemberDAO {
 			DataBaseUtil.close(conn, pstmt, rs);
 		}
 
-		return cnt;
+		return sqlresult;
 	}
 	
 	public static void main(String[] args) {

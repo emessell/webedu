@@ -8,7 +8,7 @@ public class MemDTO {
 	private String birth;	//생년월일
 	private String phone;	//휴대폰번호
 	
-	MemDTO(){}
+	public MemDTO(){}
 	
 	public MemDTO(String id, String passwd, String name, String birth, String phone) {
 		super();

@@ -1,28 +1,24 @@
-var frm = document.join_frm;
-	function mem_check(){
-		if(document.join_frm.id.value.length == 0){
-			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
-			join_frm.id.focus();
-			return; //ë°‘ì— ë¡œì§ ìˆ˜í–‰í•˜ì§€ ì•Šê²Œ
-		}
-		
-		if(document.join_frm.id.value.length < 10){
-			alert("ì•„ì´ë””ëŠ” ìµœì†Œ 10ì ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
-			join_frm.id.focus();
-			return; //ë°‘ì— ë¡œì§ ìˆ˜í–‰í•˜ì§€ ì•Šê²Œ
-		}
-		
-		if(document.join_frm.passwd.value.length == 0){
-			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
-			join_frm.id.focus();
-			return; //ë°‘ì— ë¡œì§ ìˆ˜í–‰í•˜ì§€ ì•Šê²Œ
-		}
-		
-		if(document.join_frm.passwd.value != document.join_frm.passwd.value){
-			alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!");
-			join_frm.id.focus();
-			return; //ë°‘ì— ë¡œì§ ìˆ˜í–‰í•˜ì§€ ì•Šê²Œ
-		}
-		
-		document.join_frm.submit();
-	}
+   function mem_check() {
+      if (document.join_frm.id.value.length == 0) {
+         window.alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+         document.join_frm.id.focus();
+         return;
+      }
+      if (document.join_frm.id.value.length < 4) {
+         window.alert("¾ÆÀÌµğ¸¦ 4ÀÚ ÀÌ»ó ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+         document.join_frm.id.focus();
+         return;
+      }
+      if (document.join_frm.passwd.value.length == 0) {
+         window.alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+         document.join_frm.passwd.focus();
+         return;
+      }
+      if (document.join_frm.passwd.value != document.join_frm.passwd_chk.value) {
+         window.alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+         document.join_frm.passwd_chk.focus();
+         return;
+      }
+      document.join_frm.submit();
+   }
+   

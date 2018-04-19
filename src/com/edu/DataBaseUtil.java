@@ -62,7 +62,6 @@ public class DataBaseUtil {
 		try {
 			con = dataSource.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// con.setAutoCommit(false);
