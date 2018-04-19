@@ -22,7 +22,7 @@ public class MemberDAO {
 		
 		SqlResult sqlresult = null;
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into member (id,passwd,name,birth,phone) values (?,?,?,?,?)");
+		sql.append("select id from member where id = ?");
 		
 		try {
 			conn = DataBaseUtil.getConnection();
@@ -72,6 +72,72 @@ public class MemberDAO {
 		}
 
 		return sqlresult;
+	}
+	
+	//member check
+	public SqlResult memberCheck(String id, String passwd) {
+		
+		
+		SqlResult sqlresult = null;
+		StringBuffer sql = new StringBuffer();
+		sql.append("select passwd from member where id = ?");
+		
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				if(passwd.equals(rs.getString("passwd"))) { //login success
+					sqlresult = SqlResult.MEM_LOGIN_SUCCESS;
+				}else { //password is not correct
+					sqlresult = SqlResult.MEM_LOGIN_PW_NOT;
+				}
+			}else { //no member
+				sqlresult = SqlResult.MEM_LOGIN_NOT;
+			}
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e,this.getClass().getName()+"SQL RESULT memberCheck(String id, String passwd)");
+		}finally {
+			DataBaseUtil.close(conn,pstmt,rs);
+		}
+		
+		
+		return sqlresult;
+		
+	}
+	
+	//getMember(id)
+	public MemDTO getMember(String id) {
+		MemDTO mdto = null;
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select id,passwd,name,birth,phone from member where id = ?");
+		
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mdto = new MemDTO();
+				mdto.setId(rs.getString("id"));
+				mdto.setPasswd(rs.getString("Passwd"));
+				mdto.setName(rs.getString("name"));
+				mdto.setBirth(rs.getString("birth"));
+				mdto.setPhone(rs.getString("phone"));
+			}
+			
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e,this.getClass().getName()+"SQL RESULT getMember(String id)");
+		}finally {
+			DataBaseUtil.close(conn,pstmt,rs);
+		}
+		
+		return mdto;
 	}
 	
 	public static void main(String[] args) {

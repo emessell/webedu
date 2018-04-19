@@ -9,10 +9,10 @@
 <script src="js/member.js"> </script>
 </head>
 <body>
-<center>
-<hr width=500 size=1/>
+
+<hr/>
 <h2>회원가입</h2>
-<hr width=500 size=1/>
+<hr/>
 	<form action="memJoinOK.jsp" method="post" name="join_frm">
 		아이디: <input type="text" name="id" /> <br />
 		비밀번호: <input type="password" name="passwd" /> <br />
@@ -56,6 +56,6 @@
 
 			
 	</form>
-	</center>
+	
 </body>
 </html>
