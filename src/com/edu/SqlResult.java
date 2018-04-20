@@ -8,4 +8,6 @@ public enum SqlResult {
 	MEM_LOGIN_SUCCESS,
 	MEM_LOGIN_PW_NOT,
 	MEM_LOGIN_NOT
+	
+	
 }

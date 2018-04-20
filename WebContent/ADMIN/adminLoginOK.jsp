@@ -14,10 +14,10 @@
 	String id = request.getParameter("id");
 	String passwd = request.getParameter("passwd");
 	
-	MemberDAO mdao = new MemberDAO();
-	SqlResult sqlresult = mdao.memberCheck(id,passwd);
+	AdminDAO adao = AdminDAO.getInstance();
+	AdminSqlResult sqlresult = adao.adminCheck(id,passwd);
 	
-	if(sqlresult == SqlResult.MEM_LOGIN_NOT){
+	if(sqlresult == AdminSqlResult.ADM_LOGIN_NOT){
 		//not member
 %>
 	<script>
@@ -25,7 +25,7 @@
 		window.history.go(-1); //window.history.back()
 	</script>
 <%
-	}else if(sqlresult == SqlResult.MEM_LOGIN_PW_NOT){
+	}else if(sqlresult == AdminSqlResult.ADM_LOGIN_PW_NOT){
 		//uncorrect pw
 %>
 	<script>
@@ -33,13 +33,14 @@
 		window.history.go(-1);
 	</script>
 <% 
-	}else if(sqlresult == SqlResult.MEM_LOGIN_SUCCESS){
+	}else if(sqlresult == AdminSqlResult.ADM_LOGIN_SUCCESS){
 		//login success
-		MemDTO mdto = mdao.getMember(id);
-		session.setAttribute("id", mdto.getId());
-		session.setAttribute("name", mdto.getName());
-		session.setAttribute("chkMember","OK");
-		response.sendRedirect("/webedu/main.jsp");
+		AdminDTO adto = adao.getAdmin(id);
+		session.setAttribute("id", adto.getId());
+		session.setAttribute("name", adto.getName());
+		session.setAttribute("grade", adto.getGrade());
+		session.setAttribute("chkAdmin","OK");
+		response.sendRedirect("/webedu/ADMIN/admin.jsp");
 	}
 %>
 </body>

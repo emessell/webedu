@@ -40,14 +40,14 @@
 %>
 		<script>
 			alert("Join Complete");
-			document.location.href="login.jsp";
+			document.location.href="/webedu/MEMBER/login.jsp";
 		</script>
 <%
 		}else{
 %>
 		<script>
 			alert("Join Failed");
-			document.location.href="login.jsp";
+			document.location.href="/webedu/MEMBER/login.jsp";
 		</script>
 <%		
 		}

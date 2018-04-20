@@ -140,9 +140,80 @@ public class MemberDAO {
 		return mdto;
 	}
 	
+	//modify member
+	public int updateMember(MemDTO mdto) {
+		
+		int n = 0;
+		
+		StringBuffer sql = new StringBuffer();
+//		sql.append("update member set passwd=?,name=?,birth=?,phone=? where id = ?");
+		sql.append("update member set passwd=?,name=?,phone=? where id = ?");
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, mdto.getPasswd());
+			pstmt.setString(2, mdto.getName());
+//			pstmt.setString(3, mdto.getBirth());
+			pstmt.setString(3, mdto.getPhone());
+			pstmt.setString(4, mdto.getId());
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e,this.getClass().getName()+": int updateMember(MemberDTO mdto)");
+		}finally {
+			DataBaseUtil.close(conn,pstmt);
+		}
+		return n;
+		
+	}
+	
+	public int deleteMember(String id) {
+		int n = 0;
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from member where id = ?");
+		
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			
+			n = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e,this.getClass().getName()+": int deleteMember(String id)");
+		}finally {
+			DataBaseUtil.close(conn,pstmt);
+		}
+		return n;
+	}
+	
 	public static void main(String[] args) {
 		MemberDAO mdao = new MemberDAO();
 		System.out.println(mdao);
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

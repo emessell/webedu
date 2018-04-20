@@ -13,7 +13,7 @@
 <hr/>
 <h2>회원가입</h2>
 <hr/>
-	<form action="memJoinOK.jsp" method="post" name="join_frm">
+	<form action="/webedu/MEMBER/memJoinOK.jsp" method="post" name="join_frm">
 		아이디: <input type="text" name="id" /> <br />
 		비밀번호: <input type="password" name="passwd" /> <br />
 		비밀번호 확인: <input type="password" name="passwd_chk" /> <br />
@@ -52,7 +52,7 @@
 			</select>일 <br />
 		휴대폰: <input type="text" name="phone"/> <br />
 			<input type="button" value="회원가입" onClick="mem_check()"/>
-<input type="reset" value="취소" />
+			<input type="reset" value="Reset" />
 
 			
 	</form>
