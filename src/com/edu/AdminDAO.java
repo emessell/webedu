@@ -76,37 +76,70 @@ public class AdminDAO {
 		return sqlresult;
 
 	}
-	
-	//getAdmin
+
+	// getAdmin
 	public AdminDTO getAdmin(String id) {
 		AdminDTO adto = null;
-		
+
 		StringBuffer sql = new StringBuffer();
 		sql.append("select id,passwd,name,phone,email,grade from admin where id = ?");
-		
+
 		try {
 			conn = DataBaseUtil.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				adto = new AdminDTO();
 				adto.setId(rs.getString("id"));
-				adto.setPasswd(rs.getString("Passwd"));
+				adto.setPasswd(rs.getString("passwd"));
 				adto.setName(rs.getString("name"));
 				adto.setPhone(rs.getString("phone"));
 				adto.setEmail(rs.getString("email"));
 				adto.setGrade(rs.getString("grade"));
 			}
-			
+
 		} catch (SQLException e) {
-			DataBaseUtil.printSQLException(e,this.getClass().getName()+"SQL RESULT getAdmin(String id)");
-		}finally {
-			DataBaseUtil.close(conn,pstmt,rs);
+			DataBaseUtil.printSQLException(e, this.getClass().getName() + "SQL RESULT getAdmin(String id)");
+		} finally {
+			DataBaseUtil.close(conn, pstmt, rs);
 		}
-		
+
 		return adto;
+	}
+
+	// getMember
+	public MemDTO getMemberAll() {
+		MemDTO mdto = null;
+
+		StringBuffer sql = new StringBuffer();
+		sql.append("select id,passwd,name,birth,phone,cdate,udate from member");
+
+		try {
+			conn = DataBaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mdto = new MemDTO();
+				mdto.setId(rs.getString("id"));
+				mdto.setPasswd(rs.getString("passwd"));
+				mdto.setName(rs.getString("name"));
+				mdto.setBirth(rs.getString("birth"));
+				mdto.setPhone(rs.getString("email"));
+				mdto.setCdate(rs.getString("cdate"));
+				mdto.setUdate(rs.getString("udate"));
+			}
+
+		} catch (SQLException e) {
+			DataBaseUtil.printSQLException(e, this.getClass().getName() + "SQL RESULT getAdmin(String id)");
+		} finally {
+			DataBaseUtil.close(conn, pstmt, rs);
+		}
+
+		return mdto;
 	}
 
 	public static AdminDAO getInstance() {

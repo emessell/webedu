@@ -15,7 +15,7 @@
 <%
 	String id = (String)session.getAttribute("id");
 
-	MemberDAO mdao = new MemberDAO();
+	MemberDAO mdao = MemberDAO.getInstance();
 	mdto.setId(id);
 	int n = mdao.updateMember(mdto);
 	

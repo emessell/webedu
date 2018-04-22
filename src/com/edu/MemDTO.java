@@ -7,7 +7,36 @@ public class MemDTO {
 	private String name;	//이름
 	private String birth;	//생년월일
 	private String phone;	//휴대폰번호
+	private String cdate;
+	private String udate;
 	
+	public MemDTO(String id, String passwd, String name, String birth, String phone, String cdate, String udate) {
+		super();
+		this.id = id;
+		this.passwd = passwd;
+		this.name = name;
+		this.birth = birth;
+		this.phone = phone;
+		this.cdate = cdate;
+		this.udate = udate;
+	}
+
+	public String getCdate() {
+		return cdate;
+	}
+
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
+	}
+
+	public String getUdate() {
+		return udate;
+	}
+
+	public void setUdate(String udate) {
+		this.udate = udate;
+	}
+
 	public MemDTO(){}
 	
 	public MemDTO(String id, String passwd, String name, String birth, String phone) {

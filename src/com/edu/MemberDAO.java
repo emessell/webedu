@@ -8,13 +8,18 @@ import java.sql.Statement;
 
 public class MemberDAO {
 	
+	private static MemberDAO mdao = new MemberDAO();
 	Connection conn;
 	Statement stmt;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	public MemberDAO(){
+	private MemberDAO(){
 		//conn = DataBaseUtil.getConnection();
+	}
+	
+	public static MemberDAO getInstance() {
+		return mdao;
 	}
 	
 	//check id
@@ -140,6 +145,39 @@ public class MemberDAO {
 		return mdto;
 	}
 	
+	//getMember All
+		public MemDTO getMemberAll() {
+			MemDTO mdto = null;
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("select id,passwd,name,birth,phone,cdate,udate from member");
+			
+			try {
+				conn = DataBaseUtil.getConnection();
+				pstmt = conn.prepareStatement(sql.toString());
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					mdto = new MemDTO();
+					mdto.setId(rs.getString("id"));
+					mdto.setPasswd(rs.getString("passwd"));
+					mdto.setName(rs.getString("name"));
+					mdto.setBirth(rs.getString("birth"));
+					mdto.setPhone(rs.getString("email"));
+					mdto.setCdate(rs.getString("cdate"));
+					mdto.setUdate(rs.getString("udate"));
+				}
+				
+			} catch (SQLException e) {
+				DataBaseUtil.printSQLException(e,this.getClass().getName()+"SQL RESULT getMemberAll()");
+			}finally {
+				DataBaseUtil.close(conn,pstmt,rs);
+			}
+			
+			return mdto;
+		}
+	
 	//modify member
 	public int updateMember(MemDTO mdto) {
 		
@@ -188,7 +226,7 @@ public class MemberDAO {
 	}
 	
 	public static void main(String[] args) {
-		MemberDAO mdao = new MemberDAO();
+		MemberDAO mdao = MemberDAO.getInstance();
 		System.out.println(mdao);
 	}
 	

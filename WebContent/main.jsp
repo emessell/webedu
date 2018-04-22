@@ -17,7 +17,6 @@
 ID = [<%=id %>]
 </h2>
 <hr />
-main screen
 <form action="/webedu/MEMBER/mLogout.jsp" method="post">
 <input type="submit" value="로그아웃"/>
 <input type="button" value="회원정보수정" onClick="javascript:window.location='/webedu/MEMBER/modify.jsp'"/>

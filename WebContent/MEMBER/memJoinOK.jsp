@@ -25,7 +25,7 @@
 <%=mdto.getBirth() %>
 <%=mdto.getPhone() %>
 <%
-	MemberDAO mdao = new MemberDAO();
+	MemberDAO mdao = MemberDAO.getInstance();
 	SqlResult sqlResult = mdao.checkId(mdto.getId());
 	if(sqlResult == SqlResult.MEM_EXIST){
 %>

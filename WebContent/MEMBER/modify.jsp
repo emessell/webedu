@@ -3,7 +3,7 @@
 <%@ page import = "com.edu.*" %>    
 <%
    String id = (String)session.getAttribute("id");
-   MemberDAO mdao = new MemberDAO();
+   MemberDAO mdao = MemberDAO.getInstance();
    MemDTO mdto = mdao.getMember(id);
 %>
 <!DOCTYPE html>

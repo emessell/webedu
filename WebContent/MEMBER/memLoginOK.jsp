@@ -14,7 +14,7 @@
 	String id = request.getParameter("id");
 	String passwd = request.getParameter("passwd");
 	
-	MemberDAO mdao = new MemberDAO();
+	MemberDAO mdao = MemberDAO.getInstance();
 	SqlResult sqlresult = mdao.memberCheck(id,passwd);
 	
 	if(sqlresult == SqlResult.MEM_LOGIN_NOT){

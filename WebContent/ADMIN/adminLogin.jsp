@@ -13,14 +13,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 화면</title>
 </head>
+<style>
+ input[type=text], input[type=password] {
+  width: 15%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;}
+.btn {
+  background-color: #4CAF50; color: white; padding: 16px 20px; 
+  border: none; cursor: pointer;  width: 100px;  opacity: 0.9;}
+</style>
 <body>
 <hr />
-<h2>Admin 로그인</h2>
+<h1>Admin Login</h1>
 <hr />
 <form action="/webedu/ADMIN/adminLoginOK.jsp" method="post">
-아이디 : <input type="text" name="id" /><br />
-비밀번호 : <input type="password" name="passwd"/><br /><br />
-<input type="submit" value="로그인"/>
+<p><b>Email</b></p>
+<input type="text" name="id" placeholder="Enter Email"/><br />
+<p><b>Password</b></p>
+<input type="password" name="passwd" placeholder="Enter Password"/><br />
+<input type="submit" value="로그인" class="btn"/>
 
 </form>
 </body>

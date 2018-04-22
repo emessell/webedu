@@ -4,15 +4,9 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-	String year = request.getParameter("year");
-	String month = request.getParameter("month");
-	String day = request.getParameter("day");
-%>
-
-<%
 	String id = (String)session.getAttribute("id");
 
-	MemberDAO mdao = new MemberDAO();
+	MemberDAO mdao = MemberDAO.getInstance();
 	int n = mdao.deleteMember(id);
 	
 	if(n==1){ //modify complete
