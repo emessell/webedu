@@ -1,16 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
     String id = (String)session.getAttribute("id");
     String name = (String)session.getAttribute("name");
     %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Join</title>
 <!-- 자바 스크립트 파일 불러오기 -->
-<script src="js/member.js"> </script>
+<!-- <script src="js/member.js"> </script> -->
+<script src="/webedu/public/jquery/jquery-3.3.1.js"></script>
+<script src="js/member2.js"> </script>
 </head>
 <style>
  input[type=text], input[type=password] {
@@ -26,13 +28,13 @@
 <hr/>
 	<form action="/webedu/MEMBER/memJoinOK.jsp" method="post" name="join_frm">
 		<b>Email</b><br />
-		<input type="text" name="id" placeholder="Email" /> <br />
+		<input type="text" name="id" placeholder="Email" id="id"/> <br />
 		<b>Password</b><br />
-		<input type="password" name="passwd" placeholder="Password" /> <br />
+		<input type="password" name="passwd" placeholder="Password" id="passwd"/> <br />
 		<b>Password_Check</b><br />
 		<input type="password" name="passwd_chk" placeholder="Password_Check" /> <br />
 		<b>Name</b><br />
-		<input type="text" name="name" placeholder="Name" /> <br />
+		<input type="text" name="name" placeholder="Name" id="name" /> <br />
 		<b>Birth</b><br />
 			<select name="year" id="">
 			<option value="2016">2016</option>
@@ -66,8 +68,8 @@
 			<option value="10">10</option>
 			</select>일 <br />
 		<b>Phone</b><br />
-		<input type="text" name="phone" placeholder="Phone" /> <br />
-			<input type="button" value="회원가입" onClick="mem_check()" class="btn"/>
+		<input type="text" name="phone" placeholder="Phone" id="phone"/> <br />
+			<input type="button" value="회원가입" id="memJoin" onClick="mem_check()" class="btn"/>
 			<input type="reset" value="Reset" class="btn"/>
 
 			
