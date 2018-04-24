@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class MemberDAO {
 	
@@ -146,8 +147,9 @@ public class MemberDAO {
 	}
 	
 	//getMember All
-		public MemDTO getMemberAll() {
+		public ArrayList<MemDTO> getMemberAll() {
 			MemDTO mdto = null;
+			ArrayList<MemDTO> arr = new ArrayList<>();
 			
 			StringBuffer sql = new StringBuffer();
 			sql.append("select id,passwd,name,birth,phone,cdate,udate from member");
@@ -158,15 +160,16 @@ public class MemberDAO {
 				
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()) {
+				while(rs.next()) {
 					mdto = new MemDTO();
 					mdto.setId(rs.getString("id"));
 					mdto.setPasswd(rs.getString("passwd"));
 					mdto.setName(rs.getString("name"));
 					mdto.setBirth(rs.getString("birth"));
-					mdto.setPhone(rs.getString("email"));
+					mdto.setPhone(rs.getString("phone"));
 					mdto.setCdate(rs.getString("cdate"));
 					mdto.setUdate(rs.getString("udate"));
+					arr.add(mdto);
 				}
 				
 			} catch (SQLException e) {
@@ -174,8 +177,7 @@ public class MemberDAO {
 			}finally {
 				DataBaseUtil.close(conn,pstmt,rs);
 			}
-			
-			return mdto;
+			return arr;
 		}
 	
 	//modify member

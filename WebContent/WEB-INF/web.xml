@@ -15,4 +15,17 @@
   	<location>/err/404_error.jsp</location>
   </error-page>
   
+  <context-param>
+  	<param-name>key_1</param-name>
+  	<param-value>value_1</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>key_2</param-name>
+  	<param-value>value_2</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>key_3</param-name>
+  	<param-value>value_3</param-value>
+  </context-param>
+  
 </web-app>
