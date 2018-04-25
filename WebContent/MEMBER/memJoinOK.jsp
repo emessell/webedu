@@ -23,7 +23,7 @@
 
 	<%
 		MemberDAO mdao = MemberDAO.getInstance();
-		SqlResult sqlResult = mdao.checkId(mdto.getId());
+		
 	%>
 	<c:choose>
 	
