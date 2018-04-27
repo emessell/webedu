@@ -31,18 +31,19 @@
 			<c:forEach items="${list }" var="dto">
 				<tr>
 					<th scope="row">${dto.bNum }</th>
-					<td>${dto.bTitle }</td>
+					<td><a href="view.do?bNum=${dto.bNum }">${dto.bTitle }</a></td>
 					<td>${dto.bName }</td>
 					<td>${dto.bCdate }</td>
 					<td>${dto.bHit }</td>
 				</tr>
 				</c:forEach>
+				</tbody>
 				<tr>
 					<td colspan="5" align="right">
-					<a href="write_view_do" class="btn btn_primary" role="button" aria-pressed="true">글쓰기</a>
+					<a href="write_view.do" class="btn btn_primary" role="button" aria-pressed="true">글쓰기</a>
 					</td>
 				</tr>
-			</tbody>
+			
 		</table>
 	</div>
 </body>

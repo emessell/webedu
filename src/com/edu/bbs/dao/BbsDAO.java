@@ -26,7 +26,7 @@ public class BbsDAO {
       return bdao;
    }
    
-   // 글목록
+   // 글쓰기
    public void write(BbsDTO bbsdto) {
       int cnt = 0;
       StringBuffer sql = new StringBuffer();
@@ -60,7 +60,8 @@ public class BbsDAO {
       ArrayList<BbsDTO> alist = new ArrayList<>();
       BbsDTO bbsdto = null;
       StringBuffer sql = new StringBuffer();
-      sql.append("select bnum, btitle, bname, bhit, bcontent, bcdate from bbs");
+      sql.append("select bnum, btitle, bname, bhit, bcontent, bcdate from bbs ")
+         .append("order by bnum desc");
       
       try {
          conn = DataBaseUtil.getConnection();
@@ -87,4 +88,41 @@ public class BbsDAO {
       
       return alist;
    }
+   
+ //글 가져오기
+   public BbsDTO view(int bnum) {
+	   System.out.println("bnum="+bnum);
+      ArrayList<BbsDTO> alist = new ArrayList<>();
+      BbsDTO bbsdto = null;
+      StringBuffer sql = new StringBuffer();
+      String sql2 = "update bbs set BHIT=(BHIT+1) WHERE BNUM=?";
+      sql.append("select btitle, bname, bcontent, bcdate from bbs where bnum=?");
+      
+      try {
+         conn = DataBaseUtil.getConnection();
+         pstmt = conn.prepareStatement(sql.toString());
+         pstmt.setInt(1, bnum);
+         rs = pstmt.executeQuery();
+         pstmt = conn.prepareStatement(sql2.toString());
+         pstmt.setInt(1, bnum);
+         pstmt.executeQuery();
+         
+         while(rs.next()) {
+               bbsdto = new BbsDTO();
+               bbsdto.setbTitle(rs.getString("btitle"));
+               bbsdto.setbName(rs.getString("bname"));
+               bbsdto.setbContent(rs.getString("bcontent"));
+               bbsdto.setbCdate(rs.getDate("bcdate"));
+               alist.add(bbsdto);
+         }
+         
+      } catch (SQLException e) {
+         DataBaseUtil.printSQLException(e, this.getClass().getName()+"ArrayList<BbsDTO> view()");
+      } finally {
+         DataBaseUtil.close(conn, pstmt,rs);
+      }
+      
+      return bbsdto;
+   }
+   
 }

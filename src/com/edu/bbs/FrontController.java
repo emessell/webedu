@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.bbs.cmd.BbsListCmd;
+import com.edu.bbs.cmd.BbsViewCmd;
 import com.edu.bbs.cmd.BbsWriteCmd;
 import com.edu.bbs.cmd.BCommand;
 
@@ -83,9 +84,18 @@ public class FrontController extends HttpServlet {
          viewPage = "/bbs/list.jsp";   //게시판 목록으로 이동
          break;
 
+       //글 가져오기
+      case "/bbs/view.do":
+         command = new BbsViewCmd();
+         command.execute(request, response);
+         viewPage = "/bbs/view.jsp";   //글로 이동
+         break;
+
       default:
          break;
       }
+      
+      
       
 //      요청디스패치 방식(RequestDispatcher)
 //      Server 또는 JSP 에서 요청을 받은 후 다른 컴퍼넌트로 요청을 위임할 수 있다.
