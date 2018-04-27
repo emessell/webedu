@@ -1,6 +1,5 @@
 package com.edu;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,29 +25,29 @@ public class DataBaseUtil {
 
 	private DataBaseUtil() {
 
-		// JDBC ì ‘ì† ì„¤ì •ì„ DATASOURCE ê°ì²´ì— í•´ì¤€ë‹¤.
+		// JDBC Á¢¼Ó ¼³Á¤À» DATASOURCE °´Ã¼¿¡ ÇØÁØ´Ù.
 		dataSource.setDriverClassName(driverName);
-		System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì„±ê³µ");
-		// DBì—°ê²°
+		System.out.println("µå¶óÀÌ¹ö ·Îµù ¼º°ø");
+		// DB¿¬°á
 		dataSource.setUrl("jdbc:oracle:thin:@" + serverIP + ":1521:xe");
 		dataSource.setUsername(userName);
 		dataSource.setPassword(userPass);
-		System.out.println("DB ì—°ê²° ì„±ê³µ");
-		// Connection Pool ì„¤ì • :
-		// ì„¤ì •í•˜ì§€ ì•Šìœ¼ë©´ default ê°’ìœ¼ë¡œ ì„¸íŒ…ë¨.
+		System.out.println("DB ¿¬°á ¼º°ø");
+		// Connection Pool ¼³Á¤ :
+		// ¼³Á¤ÇÏÁö ¾ÊÀ¸¸é default °ªÀ¸·Î ¼¼ÆÃµÊ.
 		dataSource.setInitialSize(5);
-		// ìµœì´ˆ ìƒì„±í•  connection ìˆ˜ : default - 0
+		// ÃÖÃÊ »ı¼ºÇÒ connection ¼ö : default - 0
 
 		dataSource.setMaxTotal(10);
-		// ìµœì´ˆ ìƒì„±í•  connection ìˆ˜ : default - 8
-		// ë¬´ì œí•œ - ìŒìˆ˜(-1)
+		// ÃÖÃÊ »ı¼ºÇÒ connection ¼ö : default - 8
+		// ¹«Á¦ÇÑ - À½¼ö(-1)
 
 		dataSource.setMaxWaitMillis(1000);
-		// Connection ë°˜ë‚©ì„ ê¸°ë‹¤ë¦¬ëŠ” ìµœëŒ€ ì‹œê°„ : default ë¬´ì œí•œ.
+		// Connection ¹İ³³À» ±â´Ù¸®´Â ÃÖ´ë ½Ã°£ : default ¹«Á¦ÇÑ.
 		dataSource.setMaxIdle(5);
-		// ìµœëŒ€ ëŒ€ì—¬ ê°€ëŠ¥í•œ Connection ìˆ˜ : default - 8, ìŒìˆ˜ - ë¬´ì œí•œ
+		// ÃÖ´ë ´ë¿© °¡´ÉÇÑ Connection ¼ö : default - 8, À½¼ö - ¹«Á¦ÇÑ
 		dataSource.setMinIdle(5);
-		// ìµœì†Œ ëŒ€ì—¬ ê°€ëŠ¥í•œ Connection ìˆ˜ : default - 0
+		// ÃÖ¼Ò ´ë¿© °¡´ÉÇÑ Connection ¼ö : default - 0
 
 	}
 

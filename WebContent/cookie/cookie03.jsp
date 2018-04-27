@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+	<%
 	//쿠키 삭제 : 쿠키값은 null로 유효시간은 0
 	Cookie c = new Cookie("id",null);
 	c.setMaxAge(0);

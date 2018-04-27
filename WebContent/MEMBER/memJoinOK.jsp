@@ -26,14 +26,14 @@
 		
 	%>
 	<c:choose>
-	
+
 		<c:when test="${sqlResult eq SqlResult.MEM_EXIST}">
 			<script>
 				alert("[ID], already exists.");
 				window.history;
 			</script>
 		</c:when>
-		
+
 		<c:when
 			test="${mdao.insertMember(mdto) eq SqlResult.MEM_JOIN_SUCCESS}">
 			session.setAttribute("id", mdto.getId());
@@ -48,7 +48,7 @@
 				document.location.href = "/webedu/MEMBER/login.jsp";
 			</script>
 		</c:otherwise>
-		
+
 	</c:choose>
 </body>
 </html>

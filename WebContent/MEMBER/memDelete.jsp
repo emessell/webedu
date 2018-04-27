@@ -1,6 +1,6 @@
-<%@ page import="com.edu.MemberDAO" %>
+<%@ page import="com.edu.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
@@ -12,14 +12,14 @@
 	if(n==1){ //modify complete
 		session.invalidate();
 %>
-		<script>
+<script>
 		alert("회원 탈퇴가 되었습니다.");
 		document.location.href = "/webedu/MEMBER/login.jsp"
 		</script>
 <%		
 	}else{ //modify fail
-%>		
-		<script>
+%>
+<script>
 		alert("회원탈퇴 실패");
 		document.history.back();
 		</script>

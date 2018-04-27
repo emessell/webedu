@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+	<%
 	//쿠키 생성
 	Cookie cookie = new Cookie("id","id_value");
 
@@ -17,9 +17,9 @@
 	//클라이언트로 전송
 	response.addCookie(cookie);
 %>
-<h2>쿠키 생성 페이지</h2>
+	<h2>쿠키 생성 페이지</h2>
 	<form action="cookie02.jsp" method="post">
-	<input type="submit" value="생성된 쿠키 확인" />
-</form>
+		<input type="submit" value="생성된 쿠키 확인" />
+	</form>
 </body>
 </html>

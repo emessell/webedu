@@ -6,8 +6,8 @@
 <%
     if(session.getAttribute("chkMember") != null){
     	%>
-    	<jsp:forward page="/admin.jsp"></jsp:forward>
-    	<%
+<jsp:forward page="/admin.jsp"></jsp:forward>
+<%
     }
     %>
 <%
@@ -23,7 +23,7 @@
 
 </head>
 <body>
-	
+
 	<hr />
 	<h2>
 		<%=name%>님 환영합니다. <br /> 당신의 등급은
@@ -31,12 +31,14 @@
 	</h2>
 	<hr />
 
-	
 
-	<form action="/webedu/ADMIN/adminLogoutOK.jsp" method="post" class="btn">
+
+	<form action="/webedu/ADMIN/adminLogoutOK.jsp" method="post"
+		class="btn">
 		<input type="submit" value="로그아웃" />
 	</form>
-	<input type="button" value="회원정보 보기" class="btn" onClick="javascript:window.location='/webedu/ADMIN/memList.jsp'"/>
+	<input type="button" value="회원정보 보기" class="btn"
+		onClick="javascript:window.location='/webedu/ADMIN/memList.jsp'" />
 
 </body>
 </html>

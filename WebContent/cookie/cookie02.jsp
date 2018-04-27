@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+	<%
 	Cookie[] cookies = request.getCookies();
 	for(Cookie c : cookies){
 		/* String str = c.getName();
@@ -17,6 +17,6 @@
 		out.println("쿠키 이름:"+c.getName()+"\n"+c.getValue());
 	}
 %>
-<a href="cookie03.jsp">쿠키 삭제</a>
+	<a href="cookie03.jsp">쿠키 삭제</a>
 </body>
 </html>
