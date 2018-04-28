@@ -11,34 +11,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/webedu/public/Origin.css" />
 <title>admin 로그인 화면</title>
 </head>
-<style>
-input[type=text], input[type=password] {
-	width: 15%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	border: none;
-	background: #f1f1f1;
-}
-
-.btn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	opacity: 0.9;
-}
-</style>
 <body>
-	<hr />
+	<hr /> <br />
 	<h1>Admin Login</h1>
-	<hr />
+	<br /> <hr />
 	<form action="/webedu/ADMIN/adminLoginOK.jsp" method="post">
 		<p>
-			<b>Email</b>
+			<br /><b>Email</b>
 		</p>
 		<input type="text" name="id" placeholder="Enter Email" /><br />
 		<p>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.bbs.cmd.BbsListCmd;
+import com.edu.bbs.cmd.BbsModifyCmd;
 import com.edu.bbs.cmd.BbsViewCmd;
 import com.edu.bbs.cmd.BbsWriteCmd;
 import com.edu.bbs.cmd.BCommand;
@@ -90,17 +91,28 @@ public class FrontController extends HttpServlet {
          command.execute(request, response);
          viewPage = "/bbs/view.jsp";   //글로 이동
          break;
+         
+       //글 수정할 페이지
+      case "/bbs/modify_form.do":
+         command = new BbsViewCmd();
+         command.execute(request, response);
+         viewPage = "/bbs/modify_form.jsp";   //수정할 수 있는 페이지 보여주기 
+         break;
+         
+       //글 수정한 뒤 페이지
+      case "/bbs/modify.do":
+         command = new BbsModifyCmd();
+         command.execute(request, response);
+         viewPage = "/bbs/view.jsp";   //수정 완료 
+         break;
 
       default:
          break;
       }
       
-      
-      
 //      요청디스패치 방식(RequestDispatcher)
 //      Server 또는 JSP 에서 요청을 받은 후 다른 컴퍼넌트로 요청을 위임할 수 있다.
 //      위임할 떄 요청객체(request)를 동일하게 전달 할 수 있다.
-      
       
       RequestDispatcher dispat =request.getRequestDispatcher(viewPage);
       dispat.forward(request, response);

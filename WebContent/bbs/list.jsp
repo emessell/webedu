@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 	<br />
-		<h2>글 목록</h2>
+		<h2>게시판</h2>
 		<p>쓰여진 글을 보여주는 목록입니다.</p>
 		<table class="table">
 			<thead class="thead-dark">

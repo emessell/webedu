@@ -31,32 +31,14 @@
 	});
 </script>
 </head>
-<style>
-.btn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	opacity: 0.9;
-}
-
-input[type=text], input[type=password] {
-	width: 15%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	border: none;
-	background: #f1f1f1;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/webedu/public/Origin.css" />
 <body>
-	<hr />
+	<hr /> <br />
 	<h1>Login</h1>
-	<hr />
+	<br /> <hr />
 	<form action="/webedu/MEMBER/memLoginOK.jsp" method="post">
 		<p>
-			<b>Email</b>
+		<br />	<b>Email</b>
 		</p>
 		<input type="text" name="id" id="id" placeholder="Enter Email" /><br />
 		<p>

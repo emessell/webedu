@@ -15,33 +15,15 @@
 <script src="/webedu/public/jquery/jquery-3.3.1.js"></script>
 <script src="js/member2.js"> </script>
 </head>
-<style>
-input[type=text], input[type=password] {
-	width: 15%;
-	padding: 5px;
-	margin: 5px 0 5px 0;
-	border: none;
-	background: #f1f1f1;
-}
-
-.btn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100px;
-	opacity: 0.9;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/webedu/public/Origin.css" />
 <body>
 
-	<hr />
+	<hr /> <br />
 	<h2>회원가입</h2>
-	<hr />
+	<br /> <hr />
 	<form action="/webedu/MEMBER/memJoinOK.jsp" method="post"
 		name="join_frm">
-		<b>Email</b><br /> <input type="text" name="id" placeholder="Email"
+		<b><br />Email</b><br /> <input type="text" name="id" placeholder="Email"
 			id="id" /> <br /> <b>Password</b><br /> <input type="password"
 			name="passwd" placeholder="Password" id="passwd" /> <br /> <b>Password_Check</b><br />
 		<input type="password" name="passwd_chk" placeholder="Password_Check"
@@ -75,10 +57,11 @@ input[type=text], input[type=password] {
 			<option value="08">8</option>
 			<option value="09">9</option>
 			<option value="10">10</option>
-		</select>일 <br /> <b>Phone</b><br /> <input type="text" name="phone"
-			placeholder="Phone" id="phone" /> <br /> <input type="button"
-			value="회원가입" id="memJoin" class="btn" /> <input type="reset"
-			value="Reset" class="btn" />
+		</select>일 <br /> <br />
+		<b>Phone</b><br />
+			<input type="text" name="phone" placeholder="Phone" id="phone" /> <br />
+			<input type="button" value="Join" id="memJoin" class="btn" />
+			<input type="reset" value="Reset" class="btn" />
 
 
 	</form>

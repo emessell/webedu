@@ -23,19 +23,19 @@
 	글 번호 : ${view.getbNum() } <br />
 	작성일 : ${view.getbCdate() } <br />
 	작성자 : ${view.getbName() }</p>
-	<p align="center">${view.getbContent() }</p>
-	
+	<b>내용</b><br />
+	<form action="modify.do" method="post">
+	<textarea name="bContent" class="form-control" cols="30" rows="10">${view.getbContent() }</textarea>
     </div>
   </div>
   <hr >
   <div style="float:right">
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="/webedu/bbs/modify_form.do?bNum=${view.getbNum() }">수정</a></li>
+    <li class="page-item"><input type="submit" class="btn btn-primary" value="수정" /></li>
     <li class="page-item"><a class="page-link" href="#">삭제</a></li>
-    <li class="page-item"><a class="page-link" href="">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
+  </form>
 </nav>
 </div>
 </div>

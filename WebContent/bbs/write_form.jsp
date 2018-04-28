@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
 <script src="/public/jquery/jquery-3.3.1.js"></script>
 <script src="/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 class="display-4">글쓰기</h1>
+	<div class="container">
+	<h1 class="display-4"><br />글쓰기<br /></h1>
 	<table class="table table-hover">
 		<form action="write.do" method="post">
 			<tr>
@@ -38,5 +38,6 @@
 			</tr>
 		</form>
 	</table>
+	</div>
 </body>
 </html>

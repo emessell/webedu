@@ -32,10 +32,8 @@ public class BbsDAO {
       StringBuffer sql = new StringBuffer();
       sql.append("insert into bbs (bnum, btitle, bname, bhit, bcontent) ")
       .append("values(bbsnum_seq.nextval,?,?,?,?)");
-      System.out.println("1");
       try {
          conn = DataBaseUtil.getConnection();
-         System.out.println("2");
          pstmt = conn.prepareStatement(sql.toString());
          
          pstmt.setString(1, bbsdto.getbTitle());
@@ -89,14 +87,14 @@ public class BbsDAO {
       return alist;
    }
    
- //글 가져오기
+ //글 보여주기
    public BbsDTO view(int bnum) {
-	   System.out.println("bnum="+bnum);
+	   System.out.println("view bnum="+bnum);
       ArrayList<BbsDTO> alist = new ArrayList<>();
       BbsDTO bbsdto = null;
       StringBuffer sql = new StringBuffer();
       String sql2 = "update bbs set BHIT=(BHIT+1) WHERE BNUM=?";
-      sql.append("select btitle, bname, bcontent, bcdate from bbs where bnum=?");
+      sql.append("select btitle, bname, bcontent, bcdate, bnum from bbs where bnum=?");
       
       try {
          conn = DataBaseUtil.getConnection();
@@ -113,6 +111,7 @@ public class BbsDAO {
                bbsdto.setbName(rs.getString("bname"));
                bbsdto.setbContent(rs.getString("bcontent"));
                bbsdto.setbCdate(rs.getDate("bcdate"));
+               bbsdto.setbNum(rs.getInt("bnum"));
                alist.add(bbsdto);
          }
          
@@ -124,5 +123,32 @@ public class BbsDAO {
       
       return bbsdto;
    }
+   
+ //글 수정하기
+   public BbsDTO modify(BbsDTO bbsdto) {
+	   int cnt = 0;
+	      StringBuffer sql = new StringBuffer();
+	      sql.append("update bbs set bcontent=? where bnum=?");
+	      try {
+	         conn = DataBaseUtil.getConnection();
+	         pstmt = conn.prepareStatement(sql.toString());
+	         
+	         pstmt.setString(1, bbsdto.getbContent());
+	         System.out.println("getbContent: "+bbsdto.getbContent());
+	         pstmt.setInt(2, bbsdto.getbNum());
+	         System.out.println("getbNum: "+bbsdto.getbNum());
+	         
+	         cnt = pstmt.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         DataBaseUtil.printSQLException(e, this.getClass().getName()+"void modify(BbsDTO bbsdto)");
+	      } finally {
+	         DataBaseUtil.close(conn, pstmt);
+	      }
+      
+      return bbsdto;
+   }
+   
+   
    
 }
