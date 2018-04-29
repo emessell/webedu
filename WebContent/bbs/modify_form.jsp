@@ -26,6 +26,7 @@
 	<b>내용</b><br />
 	<form action="modify.do" method="post">
 	<textarea name="bContent" class="form-control" cols="30" rows="10">${view.getbContent() }</textarea>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
   <hr >
@@ -33,7 +34,6 @@
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
     <li class="page-item"><input type="submit" class="btn btn-primary" value="수정" /></li>
-    <li class="page-item"><a class="page-link" href="#">삭제</a></li>
   </ul>
   </form>
 </nav>
