@@ -13,11 +13,11 @@ public class BbsModifyCmd implements BCommand{
 		
 		BbsDTO bbsdto = new BbsDTO();
 		BbsDAO bbsdao = BbsDAO.getInstance();
-//		String Num = request.getParameter("bNum");
-//		int bNum = Integer.parseInt(Num);
+		String Num = request.getParameter("bNum");
+		int bNum = Integer.parseInt(Num);
 		
 		bbsdto.setbContent(request.getParameter("bContent"));
-		bbsdto.setbNum(Integer.parseInt(request.getParameter("bNum")));
+		bbsdto.setbNum(bNum);
 		
 		bbsdao.modify(bbsdto);
 	}
