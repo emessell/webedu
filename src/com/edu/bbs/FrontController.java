@@ -15,6 +15,7 @@ import com.edu.bbs.cmd.BbsModifyCmd;
 import com.edu.bbs.cmd.BbsViewCmd;
 import com.edu.bbs.cmd.BbsWriteCmd;
 import com.edu.bbs.cmd.BCommand;
+import com.edu.bbs.cmd.BbsDeleteCmd;
 
 /**
  * Servlet implementation class FrontController
@@ -105,6 +106,13 @@ public class FrontController extends HttpServlet {
          command.execute(request, response);
          viewPage = "/bbs/view.jsp";   //수정 완료 
          break;
+         
+       //글 삭제
+      case "/bbs/delete.do":
+    	  command = new BbsDeleteCmd();
+    	  command.execute(request, response);
+    	  viewPage = "/bbs/list.jsp";   //삭제 완료 
+    	  break;
 
       default:
          break;

@@ -149,6 +149,27 @@ public class BbsDAO {
       return bbsdto;
    }
    
+   // 글 삭제
+   public void delete(BbsDTO bbsdto) {
+      int cnt = 0;
+      StringBuffer sql = new StringBuffer();
+      sql.append("delete from bbs where bnum=?");
+      
+      try {
+         conn = DataBaseUtil.getConnection();
+         pstmt = conn.prepareStatement(sql.toString());
+         
+         pstmt.setInt(1, bbsdto.getbNum());
+         
+         cnt = pstmt.executeUpdate();
+         
+      } catch (SQLException e) {
+         DataBaseUtil.printSQLException(e, this.getClass().getName()+"void delete(BbsDTO bbsdto)");
+      } finally {
+         DataBaseUtil.close(conn, pstmt);
+      }
+   }
+   
    
    
 }

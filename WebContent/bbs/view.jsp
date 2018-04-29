@@ -16,6 +16,7 @@
 	<br />
   <h2>게시판</h2>
   <hr />
+  <form action="delete.do" method="post">
   <div class="media">
     <div class="media-body">
     <h4 style="padding:15px;padding-left:30px">${view.getbTitle() }</h4>
@@ -24,7 +25,7 @@
 	작성일 : ${view.getbCdate() } <br />
 	작성자 : ${view.getbName() }</p>
 	<p align="center">${view.getbContent() }</p>
-	
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
   <hr >
@@ -32,12 +33,13 @@
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="/webedu/bbs/modify_form.do?bNum=${view.getbNum() }">수정</a></li>
-    <li class="page-item"><a class="page-link" href="#">삭제</a></li>
+    <li class="page-item"><input type="submit" class="btn btn-primary" value="삭제" /></li>
     <li class="page-item"><a class="page-link" href="">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
 </div>
+</form>
 </div>
 </body>
 </html>
