@@ -172,7 +172,64 @@ public class BbsDAO {
       }
    }
    
-   
+   //이전글 다음글 보여주기
+   public BbsDTO page(int bNum,int np) {
+	   int pageNum = 0;
+		BbsDTO bbsdto = new BbsDTO();
+		String sql = "";
+
+		if (np == 1) {
+			// 이전글
+			sql = "select bNum from bbs where bNum=(select max(bNum) from bbs where bNum < ?)";
+			try {
+				conn = DataBaseUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bNum);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					pageNum = rs.getInt("bNum");
+					bbsdto = view(pageNum);
+					System.out.println("1");
+				} else {
+					pageNum = bNum;
+					bbsdto = view(pageNum);
+					System.out.println("2");
+				}
+				
+			} catch (SQLException e) {
+				DataBaseUtil.printSQLException(e, this.getClass().getName() + "BbsDTO pageNav(int bNum, int np) 이전글");
+			} finally {
+				DataBaseUtil.close(conn, pstmt, rs);
+			}
+			
+		} else {
+			// 다음글
+			sql = "select bNum from bbs where bNum=(select min(bNum) from bbs where bNum > ?)";
+			try {
+				conn = DataBaseUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bNum);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					pageNum = rs.getInt("bNum");
+					bbsdto = view(pageNum);
+				} else {
+					pageNum = bNum;
+					bbsdto = view(pageNum);
+				}
+			} catch (SQLException e) {
+				DataBaseUtil.printSQLException(e, this.getClass().getName() + "BbsDTO pageNav(int bNum, int np) 다음글");
+			} finally {
+				DataBaseUtil.close(conn, pstmt, rs);
+			}
+		}
+		
+		return bbsdto;
+   }
    
    
 }

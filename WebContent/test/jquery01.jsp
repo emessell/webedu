@@ -35,7 +35,7 @@ li {
 </style>	
 <script>
 $(function(){
-	$(".html ~ li").css({"background-color":"#666"});
+	$(":header").css({"background-color":"#666", color:"#fff"});
 });
 </script>
 <title>Insert title here</title>

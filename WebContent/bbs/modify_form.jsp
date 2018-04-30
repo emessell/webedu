@@ -18,16 +18,14 @@
   <hr />
   <div class="media">
     <div class="media-body">
-    <form action="modify.do" method="post">
+    <form action="modify.do?${view.getbNum() }" method="post">
     <h4 style="padding:15px;padding-left:30px">제목 <input name="bTitle" class="form-control" type="text" value="${view.getbTitle() }"/></h4>
 	<p align="right" class="media-body">
 	글 번호 : ${view.getbNum() } <br />
 	작성일 : ${view.getbCdate() } <br />
 	작성자 : ${view.getbName() }</p>
 	<b>내용</b><br />
-	
 	<textarea name="bContent" class="form-control" cols="30" rows="10">${view.getbContent() }</textarea>
-	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
   <hr >
@@ -35,7 +33,6 @@
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
     <li class="page-item"><input type="submit" class="page-link" value="수정" /></li>
-    <li class="page-item"><a class="page-link" href="/webedu/bbs/view.do?bNum=${view.getbNum() }">수정</a></li>
   </ul>
   </form>
 </nav>

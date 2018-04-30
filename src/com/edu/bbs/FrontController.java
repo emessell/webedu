@@ -1,7 +1,6 @@
 package com.edu.bbs;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.edu.bbs.cmd.BbsListCmd;
-import com.edu.bbs.cmd.BbsModifyCmd;
-import com.edu.bbs.cmd.BbsViewCmd;
-import com.edu.bbs.cmd.BbsWriteCmd;
 import com.edu.bbs.cmd.BCommand;
 import com.edu.bbs.cmd.BbsDeleteCmd;
+import com.edu.bbs.cmd.BbsListCmd;
+import com.edu.bbs.cmd.BbsModifyCmd;
+import com.edu.bbs.cmd.BbsPageCmd;
+import com.edu.bbs.cmd.BbsViewCmd;
+import com.edu.bbs.cmd.BbsWriteCmd;
 
 /**
  * Servlet implementation class FrontController
@@ -114,6 +114,13 @@ public class FrontController extends HttpServlet {
     	  command.execute(request, response);
     	  viewPage = "/bbs/list.do";   //삭제 완료 
     	  break;
+    	  
+    	//페이지 이동
+      case "/bbs/page.do":
+         command = new BbsPageCmd();
+         command.execute(request, response);
+         viewPage = "/bbs/view.jsp";   //글로 이동
+         break;
 
       default:
          break;

@@ -39,13 +39,11 @@
 				</c:forEach>
 				</tbody>
 				<tr></tr>
-			<div style="float: right">
-				<nav aria-label="Page navigation example">
+				<nav aria-label="Page navigation example" style="float: right">
 					<ul class="pagination">
 						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
 					</ul>
 				</nav>
-			</div>
 		</table>
 	</div>
 </body>
