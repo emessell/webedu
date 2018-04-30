@@ -30,13 +30,15 @@
 				<td scope="col"><textarea class="form-control" name="bContent"
 						placeholder="내용"></textarea></td>
 			</tr>
-			<tr>
-				<td colspan=2 align="right">
-				<input type="submit" class="btn btn-primary" value="글쓰기" />
-				<a href="list.do" role="button" class="btn btn-primary" aria-pressed="true">목록으로</a>
-				</td>
-			</tr>
-		</form>
+				<table style="float: right">
+					<tr><td>
+						<ul class="pagination">
+							<li class="page-item"><input type="submit" class="page-link" value="글쓰기" /></li>
+							<li class="page-item"><a href="list.do" role="button" class="page-link" aria-pressed="true">목록으로</a></li>
+						</ul>
+					</td></tr>
+					</table>
+			</form>
 	</table>
 	</div>
 </body>

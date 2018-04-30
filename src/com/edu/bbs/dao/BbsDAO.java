@@ -128,14 +128,16 @@ public class BbsDAO {
    public BbsDTO modify(BbsDTO bbsdto) {
 	   int cnt = 0;
 	      StringBuffer sql = new StringBuffer();
-	      sql.append("update bbs set bcontent=? where bnum=?");
+	      sql.append("update bbs set btitle=?,bcontent=? where bnum=?");
 	      try {
 	         conn = DataBaseUtil.getConnection();
 	         pstmt = conn.prepareStatement(sql.toString());
 	         
-	         pstmt.setString(1, bbsdto.getbContent());
+	         pstmt.setString(1, bbsdto.getbTitle());
+	         System.out.println("getbContent: "+bbsdto.getbTitle());
+	         pstmt.setString(2, bbsdto.getbContent());
 	         System.out.println("getbContent: "+bbsdto.getbContent());
-	         pstmt.setInt(2, bbsdto.getbNum());
+	         pstmt.setInt(3, bbsdto.getbNum());
 	         System.out.println("getbNum: "+bbsdto.getbNum());
 	         
 	         cnt = pstmt.executeUpdate();

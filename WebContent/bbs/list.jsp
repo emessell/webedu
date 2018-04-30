@@ -38,12 +38,14 @@
 				</tr>
 				</c:forEach>
 				</tbody>
-				<tr>
-					<td colspan="5" align="right">
-					<a href="write_view.do" class="btn btn_primary" role="button" aria-pressed="true">글쓰기</a>
-					</td>
-				</tr>
-			
+				<tr></tr>
+			<div style="float: right">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
+					</ul>
+				</nav>
+			</div>
 		</table>
 	</div>
 </body>

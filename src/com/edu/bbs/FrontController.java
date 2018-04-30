@@ -104,7 +104,7 @@ public class FrontController extends HttpServlet {
       case "/bbs/modify.do":
          command = new BbsModifyCmd();
          command.execute(request, response);
-         viewPage = "/bbs/view.jsp";   //수정 완료 
+         viewPage = "/bbs/view.do";   //수정 완료 
          break;
          
          
@@ -112,7 +112,7 @@ public class FrontController extends HttpServlet {
       case "/bbs/delete.do":
     	  command = new BbsDeleteCmd();
     	  command.execute(request, response);
-    	  viewPage = "/bbs/list.jsp";   //삭제 완료 
+    	  viewPage = "/bbs/list.do";   //삭제 완료 
     	  break;
 
       default:

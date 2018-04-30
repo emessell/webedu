@@ -14,6 +14,7 @@ public class BbsModifyCmd implements BCommand{
 		BbsDTO bbsdto = new BbsDTO();
 		BbsDAO bbsdao = BbsDAO.getInstance();
 		
+		bbsdto.setbTitle(request.getParameter("bTitle"));
 		bbsdto.setbContent(request.getParameter("bContent"));
 		bbsdto.setbNum(Integer.parseInt(request.getParameter("bNum")));
 		
