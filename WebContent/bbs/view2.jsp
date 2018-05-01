@@ -14,29 +14,33 @@
 <body>
 <div class="container">
 	<br />
-  <h2>글 수정</h2>
+  <h2>글 보기</h2>
   <hr />
+    <form action="delete.do" method="post">
   <div class="media">
     <div class="media-body">
-    <form action="modify.do?bNum=${view.getbNum() }" method="post">
-    <h4 style="padding:15px;padding-left:30px">제목 <input name="bTitle" class="form-control" type="text" value="${view.getbTitle() }"/></h4>
+    <h4 style="padding:15px;padding-left:30px">${view.getbTitle() }</h4>
 	<p align="right" class="media-body">
 	글 번호 : ${view.getbNum() } <br />
 	작성일 : ${view.getbCdate() } <br />
 	작성자 : ${view.getbName() }</p>
-	<b>내용</b><br />
-	<textarea name="bContent" class="form-control" cols="30" rows="10">${view.getbContent() }</textarea>
+	<p align="center" style="margin:100px">${view.getbContent() }</p>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
   <hr >
   <div style="float:right">
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
-    <li class="page-item"><input type="submit" class="page-link" role="button" aria-pressed="true" value="수정" /></li>
+    <li class="page-item"><a class="page-link" href="/webedu/bbs/list.do">목록으로</a></li>
+    <li class="page-item"><a class="page-link" href="/webedu/bbs/modify_form.do?bNum=${view.getbNum() }">수정</a></li>
+    <li class="page-item"><input type="submit" class="page-link" value="삭제" /></li>
+    <li class="page-item"><a class="page-link" href="page.do?bNum=${view.getbNum() }&np=1">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="page.do?bNum=${view.getbNum() }&np=0">Next</a></li>
   </ul>
-  </form>
 </nav>
 </div>
+</form>
 </div>
 </body>
 </html>

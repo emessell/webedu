@@ -81,8 +81,11 @@ public class FrontController extends HttpServlet {
       
       //글 목록 가져오기
       case "/bbs/list.do":
+    	  System.out.println(1);
          command = new BbsListCmd();
+         System.out.println(2);
          command.execute(request, response);
+         System.out.println(3);
          viewPage = "/bbs/list.jsp";   //게시판 목록으로 이동
          break;
 
@@ -119,7 +122,7 @@ public class FrontController extends HttpServlet {
       case "/bbs/page.do":
          command = new BbsPageCmd();
          command.execute(request, response);
-         viewPage = "/bbs/view.jsp";   //글로 이동
+         viewPage = "/bbs/view.do";   //글로 이동
          break;
 
       default:

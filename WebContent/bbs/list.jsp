@@ -6,8 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
 <script src="/public/jquery/jquery-3.3.1.js"></script>
 <script src="/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
 <title>Insert title here</title>
@@ -39,7 +38,7 @@
 				</c:forEach>
 				</tbody>
 				<tr></tr>
-				<nav aria-label="Page navigation example" style="float: right">
+				<nav aria-label="Page navigation example" style="float:right">
 					<ul class="pagination">
 						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
 					</ul>
