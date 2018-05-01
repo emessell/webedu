@@ -35,8 +35,8 @@
     <li class="page-item"><a class="page-link" href="/webedu/bbs/list.do">목록으로</a></li>
     <li class="page-item"><a class="page-link" href="/webedu/bbs/modify_form.do?bNum=${view.getbNum() }">수정</a></li>
     <li class="page-item"><input type="submit" class="page-link" value="삭제" /></li>
-    <li class="page-item"><a class="page-link" href="page.do?bNum=${view.getbNum() }&np=1">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="page.do?bNum=${view.getbNum() }&np=0">Next</a></li>
+    <li class="page-item"><a class="page-link" href="view.do?bNum=${prepage }">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="afterpage.do?bNum=${afterpage.bNum }">Next</a></li>
   </ul>
 </nav>
 </div>

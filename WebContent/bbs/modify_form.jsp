@@ -32,7 +32,7 @@
   <div style="float:right">
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
-    <li class="page-item"><input type="submit" class="page-link" role="button" aria-pressed="true" value="수정" /></li>
+    <li class="page-item"><input type="submit" class="page-link" role="button" aria-pressed="true" value="수정완료" /></li>
   </ul>
   </form>
 </nav>

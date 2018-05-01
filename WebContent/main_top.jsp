@@ -17,7 +17,7 @@
 
 <body>
 <div class="container">
-	<header id="header1">Welcome to our Homepage</header> <br />
+	<header id="header1">Welcome</header> <br />
 	<nav id="nav" class="topnav">
 		<a class="active" href="/webedu/index.jsp">홈</a>
 		<a href="/webedu/MEMBER/login.jsp" target="iframe_content">로그인</a>

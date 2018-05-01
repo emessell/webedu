@@ -9,16 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.edu.bbs.dao.BbsDAO;
 import com.edu.bbs.dto.BbsDTO;
 
-public class BbsPageCmd implements BCommand{
+public class BbsPrepageCmd implements BCommand{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BbsDAO bbsdao = BbsDAO.getInstance();
-		int bNum = Integer.parseInt(request.getParameter("bNum"));
-		int np = Integer.parseInt(request.getParameter("np"));
+		int bNum = Integer.valueOf(request.getParameter("bNum"));
+
+		BbsDTO bbsdto = new BbsDTO();
+		BbsDAO page = BbsDAO.getInstance();
 		
-		BbsDTO bbsdto = bbsdao.page(bNum,np);
-		request.setAttribute("bbsdto", bbsdto);
+		int bNum2 = page.prepage(bNum);
+		request.setAttribute("prepage", bNum2);
+		System.out.println(bNum2);
 	}
 
 }

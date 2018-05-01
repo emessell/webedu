@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.bbs.cmd.BCommand;
+import com.edu.bbs.cmd.BbsAfterpageCmd;
 import com.edu.bbs.cmd.BbsDeleteCmd;
 import com.edu.bbs.cmd.BbsListCmd;
 import com.edu.bbs.cmd.BbsModifyCmd;
-import com.edu.bbs.cmd.BbsPageCmd;
+import com.edu.bbs.cmd.BbsPrepageCmd;
 import com.edu.bbs.cmd.BbsViewCmd;
 import com.edu.bbs.cmd.BbsWriteCmd;
 
@@ -81,11 +82,8 @@ public class FrontController extends HttpServlet {
       
       //글 목록 가져오기
       case "/bbs/list.do":
-    	  System.out.println(1);
          command = new BbsListCmd();
-         System.out.println(2);
          command.execute(request, response);
-         System.out.println(3);
          viewPage = "/bbs/list.jsp";   //게시판 목록으로 이동
          break;
 
@@ -118,12 +116,20 @@ public class FrontController extends HttpServlet {
     	  viewPage = "/bbs/list.do";   //삭제 완료 
     	  break;
     	  
-    	//페이지 이동
-      case "/bbs/page.do":
-         command = new BbsPageCmd();
+    	  //이전글
+      case "/bbs/prepage.do":
+         command = new BbsPrepageCmd();
          command.execute(request, response);
          viewPage = "/bbs/view.do";   //글로 이동
          break;
+         
+         //다음글
+      case "/bbs/afterpage.do":
+         command = new BbsAfterpageCmd();
+         command.execute(request, response);
+         viewPage = "/bbs/view.do";   //글로 이동
+         break;
+
 
       default:
          break;

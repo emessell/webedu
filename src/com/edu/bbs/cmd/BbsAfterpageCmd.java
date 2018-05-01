@@ -9,14 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.edu.bbs.dao.BbsDAO;
 import com.edu.bbs.dto.BbsDTO;
 
-public class BbsViewCmd implements BCommand{
+public class BbsAfterpageCmd implements BCommand{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BbsDAO bbsdao = BbsDAO.getInstance();
+		int bNum = Integer.valueOf(request.getParameter("bNum"));
+
+		BbsDTO bbsdto = new BbsDTO();
+		BbsDAO page = BbsDAO.getInstance();
 		
-		BbsDTO view = bbsdao.view(Integer.parseInt(request.getParameter("bNum")));
-		request.setAttribute("view", view);
+//		bbsdto = page.afterpage(bNum);
+		request.setAttribute("afterpage", bbsdto);
 	}
 
 }
