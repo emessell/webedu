@@ -15,24 +15,10 @@ public class BbsDTO {
 	private int bGroup;			//
 	private int bStep;			//
 	private int bIndent;		//
+	private int pNum;		//
+	private int nNum;		//
 	
 	public BbsDTO() {}
-	
-	public BbsDTO(int bNum, String bTitle, String bId, String bName, Date bCdate, Date bUdate, int bHit,
-			String bContent, int bGroup, int bStep, int bIndent) {
-		super();
-		this.bNum = bNum;
-		this.bTitle = bTitle;
-		this.bId = bId;
-		this.bName = bName;
-		this.bCdate = bCdate;
-		this.bUdate = bUdate;
-		this.bHit = bHit;
-		this.bContent = bContent;
-		this.bGroup = bGroup;
-		this.bStep = bStep;
-		this.bIndent = bIndent;
-	}
 	
 	public int getbNum() {
 		return bNum;
@@ -100,4 +86,48 @@ public class BbsDTO {
 	public void setbIndent(int bIndent) {
 		this.bIndent = bIndent;
 	}
+
+	public int getpNum() {
+		return pNum;
+	}
+
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
+
+	public int getnNum() {
+		return nNum;
+	}
+
+	public void setnNum(int nNum) {
+		this.nNum = nNum;
+	}
+
+	public BbsDTO(int bNum, String bTitle, String bId, String bName, Date bCdate, Date bUdate, int bHit,
+			String bContent, int bGroup, int bStep, int bIndent, int pNum, int nNum) {
+		super();
+		this.bNum = bNum;
+		this.bTitle = bTitle;
+		this.bId = bId;
+		this.bName = bName;
+		this.bCdate = bCdate;
+		this.bUdate = bUdate;
+		this.bHit = bHit;
+		this.bContent = bContent;
+		this.bGroup = bGroup;
+		this.bStep = bStep;
+		this.bIndent = bIndent;
+		this.pNum = pNum;
+		this.nNum = nNum;
+	}
+
+	@Override
+	public String toString() {
+		return "BbsDTO [bNum=" + bNum + ", bTitle=" + bTitle + ", bId=" + bId + ", bName=" + bName + ", bCdate="
+				+ bCdate + ", bUdate=" + bUdate + ", bHit=" + bHit + ", bContent=" + bContent + ", bGroup=" + bGroup
+				+ ", bStep=" + bStep + ", bIndent=" + bIndent + "]";
+	}
+	
+	
+	
 }

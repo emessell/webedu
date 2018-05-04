@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="/webedu/public/jquery/jquery-3.3.1.js"></script>
+<script>
+	$(function(){
+		$("#html").click(function(){
+			$("#result").load("test.html #hello1",function(){
+				alert("success.");
+			});
+		});
+		$("#html2").click(function(){
+			$("#result").load("test.html #hello2",function(){
+				alert("success2.");
+			});
+		});
+	})
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<button id="html">요청</button>
+<button id="html2">요청</button>
+<div id="result"></div>
+</body>
+</html>

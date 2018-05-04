@@ -9,6 +9,18 @@
 <link rel="stylesheet" href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
 <script src="/public/jquery/jquery-3.3.1.js"></script>
 <script src="/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
+<style>
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+.pagination a:hover:not (.active ) {
+	background-color: #ddd;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,7 +42,8 @@
 			<c:forEach items="${list }" var="dto">
 				<tr>
 					<th scope="row">${dto.bNum }</th>
-					<td><a href="view.do?bNum=${dto.bNum }">${dto.bTitle }</a></td>
+					<td><c:forEach begin="1" end="${dto.bIndent }">[답]</c:forEach>
+					<a href="view.do?bNum=${dto.bNum }">${dto.bTitle }</a></td>
 					<td>${dto.bName }</td>
 					<td>${dto.bCdate }</td>
 					<td>${dto.bHit }</td>
@@ -43,6 +56,15 @@
 						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
 					</ul>
 				</nav>
+			<div class="pagination">
+				<a href="#">&laquo;</a>
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">&raquo;</a>
+			</div>
 		</table>
 	</div>
 </body>

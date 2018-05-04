@@ -21,10 +21,15 @@
     <div class="media-body">
     <h4 style="padding:15px;padding-left:30px">${view.getbTitle() }</h4>
 	<p align="right" class="media-body">
-	글 번호 : ${view.getbNum() } <br />
-	작성일 : ${view.getbCdate() } <br />
+	글 번호 : ${view.getbNum() }<br />
+	작성일 : ${view.getbCdate() }<br />
 	작성자 : ${view.getbName() }</p>
-	<p align="center" style="margin:100px">${view.getbContent() }</p>
+	<hr style="width:95%"/>
+	<p align="center" style="margin:100px"><pre>${view.getbContent() }</pre></p>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
+	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
 	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
@@ -34,9 +39,10 @@
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="/webedu/bbs/list.do">목록으로</a></li>
     <li class="page-item"><a class="page-link" href="/webedu/bbs/modify_form.do?bNum=${view.getbNum() }">수정</a></li>
+    <li class="page-item"><a href="replyView.do?bNum=${view.bNum}" class="page-link" id="mybtn1" role="button" aria-pressed="true">답글</a></li>
     <li class="page-item"><input type="submit" class="page-link" value="삭제" /></li>
-    <li class="page-item"><a class="page-link" href="view.do?bNum=${prepage }">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="afterpage.do?bNum=${afterpage.bNum }">Next</a></li>
+    <li class="page-item"><a class="page-link" href="view.do?bNum=${view.getpNum() }">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="view.do?bNum=${view.getnNum() }">Next</a></li>
   </ul>
 </nav>
 </div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="/webedu/public/jquery/jquery-3.3.1.js"></script>
+<script>
+	$(function() {
+
+		$(document).ajaxComplete(function(event, xhr, setting) {
+			console.log("ajaxComplete");
+			result += "<h3> 검색결과가 완료되었습니다.</h3>";
+			$("#msg").html(result);
+		});
+
+		$("#f1").click(function() {
+			var result = "";
+			$.ajax({
+				type : "get",
+				url : "find.jsp",
+				data : {
+					v1 : $("#v1").val()
+				},
+				dataType : "text",
+				success : function(responseData, status, xhr) {
+					$("#result").text(responseData);
+				},
+				error : function(xhr, status, error) {
+					console.log(status + "," + error);
+				},
+				statusCode : {
+					200 : function() {
+						alert("success~");
+					},
+					403 : function() {
+						alert("forbiden");
+					},
+					404 : function() {
+						alert("page not found...");
+					}
+				}
+			})
+		})
+	})
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	검색어
+	<input type="text" name="bTitle" id="v1" />
+	<br />
+	<button id="f1">검색</button>
+	<div id="result"></div>
+	<div id="msg"></div>
+</body>
+</html>
