@@ -9,6 +9,21 @@
 <link rel="stylesheet" href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
 <script src="/public/jquery/jquery-3.3.1.js"></script>
 <script src="/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
+<script>
+$(function() {
+	$("input[value='검색']").click(function() {
+		/* if ($("input[name=search]").val() == "") {
+			window.alert("검색할 단어를 입력해주세요!");
+			$("input[name=search]").focus();
+			return false;
+		}
+		 location.href = "list.do?option=" + $("[name=option]").val() +"&search="+$("[name=search]").val() ; 
+ */	
+		self.location = "list.do?reqPage=1"
+		+"&option="+$("[name=option]").val()+"&search="+$("[name=search]").val();
+	});	
+});
+</script>
 <style>
 .pagination a {
 	color: black;
@@ -56,15 +71,55 @@
 						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
 					</ul>
 				</nav>
-			<div class="pagination">
-				<a href="#">&laquo;</a>
-				<a href="#">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">&raquo;</a>
-			</div>
+		</table>
+		<table width="100%">
+			<tr>
+				<td width="95%">
+					<ul id="pageing"
+						class="pagination pagination-sm justify-content-center">
+						<c:if test="${page.prev }">
+							<li class="page-item"><a class="page-link"
+								href="list.do?page.finalEndPage">처음</a></li>
+							<li class="page-item"><a class="page-link"
+								href="list.do?${page.getmakeURL(page.startPage-1) }" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
+							</a></li>
+						</c:if>
+
+						<c:forEach begin="${page.startPage }" end="${page.endPage }"
+							var="PAGE">
+							<c:if test="${page.recordCriteria.reqPage == PAGE }">
+								<li class="page-item active"><a class="page-link" href="#">${PAGE }</a></li>
+							</c:if>
+							<c:if test="${page.recordCriteria.reqPage != PAGE }">
+								<li class="page-item"><a class="page-link"
+									href="list.do?${page.getmakeURL(PAGE) }">${PAGE }</a></li>
+							</c:if>
+						</c:forEach>
+
+						<c:if test="${page.next }">
+							<li class="page-item"><a class="page-link"
+								href="list.do?${page.getmakeURL(page.endPage+1) }" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
+							</a></li>
+							<li class="page-item"><a class="page-link"
+								href="list.do?${page.getmakeURL(page.finalEndPage) }">마지막</a></li>
+						</c:if>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="option" class="form-control-sm">
+						<option <c:out value="${option == '제목 내용' ? 'selected' : ''}" />>제목+내용</option>
+						<option <c:out value="${option == '작성자' ? 'selected' : ''}" />>작성자</option>
+						<option <c:out value="${option == '제목' ? 'selected' : ''}" />>제목</option>
+						<option <c:out value="${option == '내용' ? 'selected' : ''}" />>내용</option>
+					</select>
+				<input type="text" name="search" id="" class="form-control-sm" value="${search }"/>
+				<input type="button" class="btn-sm btn-secondary" id="searchBtn" value="검색" />
+				</td>
+			</tr>
 		</table>
 	</div>
 </body>

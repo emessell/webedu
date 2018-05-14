@@ -128,6 +128,8 @@ public class FrontController extends HttpServlet {
 			viewPage = "list.do"; // 게시판 목록으로 이동
 			break;
 			
+		
+			
       default:
          break;
       }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.bbs.dao.BbsDAO;
+import com.edu.bbs.dao.BbsDAOimpl;
 import com.edu.bbs.dto.BbsDTO;
 
 public class BbsDeleteCmd implements BCommand {
@@ -15,7 +16,7 @@ public class BbsDeleteCmd implements BCommand {
 		
 		bbsdto.setbNum(Integer.parseInt(request.getParameter("bNum")));
 		
-		BbsDAO bbsdao = BbsDAO.getInstance();
+		BbsDAO bbsdao = BbsDAOimpl.getInstance();
 		bbsdao.delete(bbsdto);
 	}
 }

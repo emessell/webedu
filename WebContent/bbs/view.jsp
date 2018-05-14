@@ -27,10 +27,6 @@
 	<hr style="width:95%"/>
 	<p align="center" style="margin:100px"><pre>${view.getbContent() }</pre></p>
 	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
-	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
-	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
-	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
-	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
   <hr >

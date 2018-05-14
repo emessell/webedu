@@ -30,7 +30,7 @@
 	</h2>
 	<hr /><br />
 	
-		<input type="button" value="로그아웃" class="btn" onClick="javascript:window.location='/webedu/ADMIN/adminLogoutOK.jsp'"/>
+		<input type="button" value="로그아웃" class="btn" onClick="javascript:window.location='/webedu/ADMIN/adminLogoutOK.jsp'" />
 		<input type="button" value="회원정보" class="btn" onClick="javascript:window.location='/webedu/ADMIN/memList.jsp'" />
 	
 	
