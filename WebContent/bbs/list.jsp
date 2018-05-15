@@ -7,18 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/webedu/public/bootstrap-4.1.0/dist/css/bootstrap.css">
-<script src="/public/jquery/jquery-3.3.1.js"></script>
-<script src="/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
+<script src="/webedu/public/jquery/jquery-3.3.1.js"></script>
+<script src="/webedu/public/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
 <script>
 $(function() {
 	$("input[value='검색']").click(function() {
-		/* if ($("input[name=search]").val() == "") {
-			window.alert("검색할 단어를 입력해주세요!");
-			$("input[name=search]").focus();
-			return false;
-		}
-		 location.href = "list.do?option=" + $("[name=option]").val() +"&search="+$("[name=search]").val() ; 
- */	
 		self.location = "list.do?reqPage=1"
 		+"&option="+$("[name=option]").val()+"&search="+$("[name=search]").val();
 	});	
@@ -120,7 +113,7 @@ $(function() {
 				<input type="button" class="btn-sm btn-secondary" id="searchBtn" value="검색" />
 				</td>
 			</tr>
-		</table>
+			</table>
 	</div>
 </body>
 </html>

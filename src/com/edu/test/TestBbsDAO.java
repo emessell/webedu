@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import com.edu.bbs.RecordCriteria;
 import com.edu.bbs.dao.BbsDAO;
 import com.edu.bbs.dao.BbsDAOimpl;
 import com.edu.bbs.dto.BbsDTO;
 
 class TestBbsDAO {
 
-	@Test
+	/*@Test
 	void test() {
 		RecordCriteria pc = new RecordCriteria(1,10);
 		
@@ -21,6 +20,26 @@ class TestBbsDAO {
 		for(BbsDTO bbsdto: alist) {
 			System.out.println(bbsdto);
 		}
-	}
+	}*/
+	
+	/*@Test
+	   void test3() {
+	      
+	      BbsDAO bbsdao = BbsDAOimpl.getInstance();
+	      ArrayList<BbsDTO> alist = bbsdao.searchList("제목 내용", "15",1,10);
+	      for(BbsDTO bbsdto: alist) 
+	         System.out.println(bbsdto);
+	      
+	   }*/
+	
+	@Test
+	   void test4() {
+	      
+	      BbsDAO bbsdao = BbsDAOimpl.getInstance();
+	      int count = bbsdao.getSearchListCount("작성자", "15");
+	         System.out.println(count);
+	      }
+	
+	
 
 }

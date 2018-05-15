@@ -28,7 +28,9 @@ public interface BbsDAO {
 
 	public int getListCount();
 
-	public ArrayList<BbsDTO> searchList(String option, String search, int startRow, int endRow);
+	// 검색한 글목록가져오기
+	ArrayList<BbsDTO> searchList(String option, String search, int startRow, int endRow);
 
-	public int getSearchListCount(String option, String search);
+	// 검색한 글 전체 수 가져오기
+	int getSearchListCount(String option, String search);
 }
