@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.bbs.PageCriteria;
+import com.edu.bbs.RecordCriteria;
 import com.edu.bbs.dao.RbbsDAO;
 import com.edu.bbs.dao.RbbsDAOimpl;
 import com.edu.bbs.dto.RbbsDTO;
@@ -14,17 +16,29 @@ public class RbbsListCmd implements BCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		int reReqPage = 0;
+		PageCriteria pc = null;
+		RecordCriteria rc = null;
+		
+		//요청 페이지가 없으면 1 페이지로 이동
+		if(request.getParameter("reReqPage")==null || request.getParameter("reReqPage")=="") {
+			reReqPage = 1;
+		}else {
+			reReqPage = Integer.parseInt(request.getParameter("reReqPage"));
+		}
+		
+		int bNum = Integer.valueOf(request.getParameter("bNum"));
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
 		ArrayList<RbbsDTO> alist = new ArrayList<>();
 		StringBuffer str = new StringBuffer();
 		
-		int bNum = Integer.valueOf(request.getParameter("bNum"));
-		alist = rbbsdao.list(bNum);
-/*		{"employees":[
-		              { "firstName":"John", "lastName":"Doe" },
-		              { "firstName":"Anna", "lastName":"Smith" },
-		              { "firstName":"Peter", "lastName":"Jones" }
-		          ]}*/
+		rc = new RecordCriteria(reReqPage);
+		alist = rbbsdao.list(bNum,rc.getStartRecord(),rc.getEndRecord());
+		
+		int replyTotalRec = rbbsdao.replyTotalRec(bNum);
+		pc = new PageCriteria(rc, replyTotalRec);
+		
 		str.append("{ \"result\" : [");
 		int i=0;
 		for(RbbsDTO rbbsdto : alist) {
@@ -43,7 +57,15 @@ public class RbbsListCmd implements BCommand {
 				str.append("\"RBAD\":\""+rbbsdto.getRbad()+"\"},");
 			}
 		}
-		str.append("]}");
+		str.append("] ,");
+		
+		str.append("\"pageCriteria\" :");
+		str.append("{\"startPage\" :" 		+ pc.getStartPage() + ",");
+		str.append("\"endPage\" :" 			+ pc.getEndPage() + ",");
+		str.append("\"finalEndPage\" :" 	+ pc.getFinalEndPage() + ",");
+		str.append("\"prev\" :" 			+ pc.isPrev() + ",");
+		str.append("\"next\" :" 			+ pc.isNext() );
+		str.append("} }");
 		
 		response.getWriter().write(str.toString());
 	}

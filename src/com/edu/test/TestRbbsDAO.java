@@ -10,19 +10,19 @@ import com.edu.bbs.dto.RbbsDTO;
 
 class TestRbbsDAO {
 
-/*	@Test
+	@Test
 	void test() {
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
 		RbbsDTO rbbsdto = new RbbsDTO();
 		
-		rbbsdto.setBnum(1);
-		rbbsdto.setRname("test");
-		rbbsdto.setRcontent("reply test");
-		
+		for(int i=0; i<1000; ++i) {
+		rbbsdto.setBnum(1584);
+		rbbsdto.setRname("홍길동"+i);
+		rbbsdto.setRcontent(i+".댓글 테스트");
 		rbbsdao.write(rbbsdto);
-		
+		}
 		System.out.println(rbbsdto.toString());
-	}*/
+	}
 	
 /*	@Test
 	void test2() {
@@ -55,7 +55,7 @@ class TestRbbsDAO {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	void delete() {
 		ArrayList<RbbsDTO> alist;
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
@@ -72,6 +72,6 @@ class TestRbbsDAO {
 		for(RbbsDTO rbbsdto : alist) {
 			System.out.println(rbbsdto.toString());
 		}
-	}
+	}*/
 
 }

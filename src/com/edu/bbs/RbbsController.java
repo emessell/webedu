@@ -78,12 +78,26 @@ public class RbbsController extends HttpServlet {
 			command = new RbbsModifyCmd();
 			command.execute(request, response);
 			break;
+			
+		// 좋아요 나빠요
+		case "/rbbs/goodOrBad":
+			command = new GoodOrBadCmd();
+			command.execute(request, response);
+			break;
 
 		// 댓글 삭제
 		case "/rbbs/delete":
 			command = new RbbsDeleteCmd();
 			command.execute(request, response);
 			break;
+			
+		// 댓글 삭제
+		case "/rbbs/reReply":
+			command = new ReReplyCmd();
+			command.execute(request, response);
+			break;
+
+		
 
 		default:
 			break;

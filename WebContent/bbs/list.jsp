@@ -35,7 +35,6 @@ $(function() {
 	<div class="container">
 	<br />
 		<h2>게시판</h2>
-		<p>쓰여진 글을 보여주는 목록입니다.</p>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -59,6 +58,14 @@ $(function() {
 				</c:forEach>
 				</tbody>
 				<tr></tr>
+				<select name="option" class="form-control-sm" style="float:left">
+						<option <c:out value="${option == '제목 내용' ? 'selected' : ''}" />>제목+내용</option>
+						<option <c:out value="${option == '작성자' ? 'selected' : ''}" />>작성자</option>
+						<option <c:out value="${option == '제목' ? 'selected' : ''}" />>제목</option>
+						<option <c:out value="${option == '내용' ? 'selected' : ''}" />>내용</option>
+					</select>
+				<input type="text" name="search" id="" class="form-control-sm" value="${search }"/>
+				<input type="button" class="btn-sm btn-secondary" id="searchBtn" value="검색" />
 				<nav aria-label="Page navigation example" style="float:right">
 					<ul class="pagination">
 						<li class="page-item"><a class="page-link" href="/webedu/bbs/write_view.do">글쓰기</a></li>
@@ -101,18 +108,7 @@ $(function() {
 					</ul>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<select name="option" class="form-control-sm">
-						<option <c:out value="${option == '제목 내용' ? 'selected' : ''}" />>제목+내용</option>
-						<option <c:out value="${option == '작성자' ? 'selected' : ''}" />>작성자</option>
-						<option <c:out value="${option == '제목' ? 'selected' : ''}" />>제목</option>
-						<option <c:out value="${option == '내용' ? 'selected' : ''}" />>내용</option>
-					</select>
-				<input type="text" name="search" id="" class="form-control-sm" value="${search }"/>
-				<input type="button" class="btn-sm btn-secondary" id="searchBtn" value="검색" />
-				</td>
-			</tr>
+			
 			</table>
 	</div>
 </body>

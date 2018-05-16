@@ -13,12 +13,12 @@ public interface RbbsDAO {
 	void write(RbbsDTO rbbsdto);
 
 	// 댓글 목록
-	ArrayList<RbbsDTO> list(int startRow, int endRow);
+	ArrayList<RbbsDTO> list(int bNUm, int startRow, int endRow);
 	// 댓글 갯수
 	int getListCount();
 
 	// 글내용 가져오기
-	BbsDTO view(int bNum);
+	RbbsDTO view(int bNum);
 
 	// 글수정하기
 	RbbsDTO modify(String rNum, String rContent);
@@ -27,10 +27,10 @@ public interface RbbsDAO {
 	void delete(RbbsDTO rbbsdto);
 
 	// 다음글 이전글 이동
-	BbsDTO pageNav(int bNum, int np);
+	RbbsDTO pageNav(int bNum, int np);
 
 	//원글 가져오기
-	BbsDTO replyView(int bNum);
+	RbbsDTO replyView(int rNum);
 
 	// 답글 등록하기
 	void reply(RbbsDTO rbbsdto);
@@ -46,6 +46,11 @@ public interface RbbsDAO {
 	ArrayList<RbbsDTO> list(int bNum);
 
 	void delete(String rNum);
+
+	void goodOrBad(String rNum, String goodOrBad);
+	
+	// 댓글 총계
+	int replyTotalRec(int bnum);
 
 	
 	
