@@ -244,7 +244,7 @@ var reReqPage = 1;
 						str += "<span><li data-rNum='" + rec.RNUM + "' class = 'reList'></span>"
 						/* + rec.BNUM + "|" */
 						+ "<img src=\"/webedu/img/img_avatar1.png\" alt=\"John Doe\" class=\"mr-3 mt-3 rounded-circle\" style=\"width:60px;\">"
-						+ "<div class=\"media-body\"><h4>" + rec.RNAME + "  "
+						+ "<h4>" + rec.RNAME + "  "
 						+ "<small><i>"+rec.RCDATE + "</i></small></h4>"
 						+ "<p>"+rec.RCONTENT + "</p>"
 						+ "<button id=\"goodBtn\" style=\"background-color:white;color:#007BFF;margin-right:5px; \"; class=\"btn btn-primary\">"
@@ -253,7 +253,7 @@ var reReqPage = 1;
 						+ "<i class=\"fa fa-thumbs-o-down\"></i>"+" "+rec.RBAD+"</button>"
 						+ "<button id='b1' class=\"btn btn-primary\" style=\"background-color:#007BFF;color:white;float:right;border:0 \">수정</button>"
 						+ "<button id='b2' class=\"btn btn-primary\" style=\"background-color:#007BFF;color:white;float:right;border:0 \">댓글</button>"
-						+ "</div></li>";
+						+ "</li>";
 					});
 					$("#reply").html(str);
 					//페이지 리스트 호출
