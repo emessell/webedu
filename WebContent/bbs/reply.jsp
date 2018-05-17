@@ -13,10 +13,9 @@
 <style>
 	#modifyDiv{
 		width:500px; height:200px;
-		background-color:gray;
+		background-color:white;
 		top:20%; left:30%;
 		padding:20px;
-		z-index:10;
 	}
 	
 	 #pageNumList>li{ /* 이민섭 바보멍청이해삼말미잘 열심히 하렴^^*너도 할 수 있다(everything)♥ */
@@ -47,7 +46,7 @@ var reReqPage = 1;
 	$(function() {
 		//댓글 수정양식 숨기기
 		$("#modifyDiv").hide();
-		$("#remodifyDiv").hide();
+		
 		
 		//댓글 목록 가져오기
 		//replyList();
@@ -55,52 +54,52 @@ var reReqPage = 1;
 		replyList(reReqPage);
 		
 		
-		//댓글창 보이기, 댓글 목록 처리
-		$("#reply").on("click", ".reList button#b1", function() {
+		//댓글 수정 창 보이기, 댓글 목록 처리
+		$("#reply").on("click", ".reList #b1", function() {
 			var li = $(this).parent();
 			var rNum = li.attr("data-rNum");
-			var reContent = li.text();
+			var reContent = li.attr("data-rContent");
 
 			$(".title-dialog").html(rNum);
 			$("#reContent").val(reContent);
 			$("#modifyDiv").show("slow");
 			
-			//댓글 작성 클릭시 수행로직
-			$("#replyBtn").click(function() {
-				var writer = $("#writer").val();
-				var replyContent = $("#replyContent").val();
-
-				$.ajax({
-					type : "POST",
-					url : "/webedu/rbbs/write",
-					dataType : "text",
-					data : {
-						bNum : bNum,
-						rName : writer,
-						rContent : replyContent
-					},
-					success : function(result) {
-						alert("댓글등록성공");
-						replyList(reReqPage);
-					},
-					error : function(e) {
-						console.log("실패" + e)
-					}
-				});
-			});
-		});
-
 		//대댓글창 보이기
-		$("#b2").on("click", ".reList button", function() {
+		$("#reply").on("click", ".reList #b2", function() {
 			var li = $(this).parent();
 			console.log(li);
 			var rNum = li.attr("data-rNum");
 			var reContent = li.text();
-
 			$(".title-dialog").html(rNum);
 			$("#reContent").val(reContent);
 			$("#modifyDiv").show("slow");
 		});
+			
+		//댓글 작성 클릭시 수행로직
+		$("#replyBtn").click(function() {
+			var writer = $("#writer").val();
+			var replyContent = $("#replyContent").val();
+				$.ajax({
+				type : "POST",
+				url : "/webedu/rbbs/write",
+				dataType : "text",
+				data : {
+					bNum : bNum,
+					rName : writer,
+					rContent : replyContent
+				},
+				success : function(result) {
+					alert("댓글등록성공");
+					replyList(reReqPage);
+				},
+				error : function(e) {
+					console.log("실패" + e)
+				}
+			});
+		});
+	});
+
+		
 
 		// 댓글 수정창 닫기
 		$("#closeBtn").click(function() {
@@ -241,8 +240,7 @@ var reReqPage = 1;
 					$.each(data.result, function(idx, rec) {
 						console.log(rec);
 						console.log(rec.RNUM);
-						str += "<span><li data-rNum='" + rec.RNUM + "' class = 'reList'></span>"
-						/* + rec.BNUM + "|" */
+						str += "<span><li data-rNum='" + rec.RNUM + "' data-rContent='" + rec.RCONTENT + "' class = 'reList'></span>"
 						+ "<img src=\"/webedu/img/img_avatar1.png\" alt=\"John Doe\" class=\"mr-3 mt-3 rounded-circle\" style=\"width:60px;\">"
 						+ "<h4>" + rec.RNAME + "  "
 						+ "<small><i>"+rec.RCDATE + "</i></small></h4>"
@@ -342,11 +340,11 @@ var reReqPage = 1;
 	<div class="container">
 		<textarea id="reContent" cols="30" rows="3"></textarea>
 	</div>
-	<div class="container">
-		<button id="reReplyBtn">댓글</button>
-		<button id="reModifyBtn">수정</button>
-		<button id="reDelBtn">삭제</button>
-		<button id="closeBtn">닫기</button>
+	<div class="pagination" style="float:right;">
+		<button id="reReplyBtn" class="page-link">댓글</button>
+		<button id="reModifyBtn" class="page-link">수정</button>
+		<button id="reDelBtn" class="page-link">삭제</button>
+		<button id="closeBtn" class="page-link">닫기</button>
 	</div>
 </div>
 <div id="reDiv" class="w3-container">

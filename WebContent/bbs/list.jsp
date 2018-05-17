@@ -80,8 +80,7 @@ $(function() {
 						<c:if test="${page.prev }">
 							<li class="page-item"><a class="page-link"
 								href="list.do?page.finalEndPage">처음</a></li>
-							<li class="page-item"><a class="page-link"
-								href="list.do?${page.getmakeURL(page.startPage-1) }" aria-label="Previous">
+							<li class="page-item"><a class="page-link" href="list.do?${page.getmakeURL(page.startPage-1) }" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
 							</a></li>
 						</c:if>
@@ -92,18 +91,15 @@ $(function() {
 								<li class="page-item active"><a class="page-link" href="#">${PAGE }</a></li>
 							</c:if>
 							<c:if test="${page.recordCriteria.reqPage != PAGE }">
-								<li class="page-item"><a class="page-link"
-									href="list.do?${page.getmakeURL(PAGE) }">${PAGE }</a></li>
+								<li class="page-item"><a class="page-link" href="list.do?${page.getmakeURL(PAGE) }">${PAGE }</a></li>
 							</c:if>
 						</c:forEach>
 
 						<c:if test="${page.next }">
-							<li class="page-item"><a class="page-link"
-								href="list.do?${page.getmakeURL(page.endPage+1) }" aria-label="Next">
+							<li class="page-item"><a class="page-link" href="list.do?${page.getmakeURL(page.endPage+1) }" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
 							</a></li>
-							<li class="page-item"><a class="page-link"
-								href="list.do?${page.getmakeURL(page.finalEndPage) }">마지막</a></li>
+							<li class="page-item"><a class="page-link" href="list.do?${page.getmakeURL(page.finalEndPage) }">마지막</a></li>
 						</c:if>
 					</ul>
 				</td>
