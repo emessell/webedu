@@ -12,25 +12,24 @@
 <title>view</title>
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-top:4%">
 	<br />
-  <h2>글 보기</h2>
-  <hr />
+  <h2><small>#${view.getbNum() }</small>_         ${view.getbTitle() }</h2>
+  
     <form action="delete.do" method="post">
   <div class="media">
     <div class="media-body">
-    <h4 style="padding:15px;padding-left:30px">${view.getbTitle() }</h4>
+    <%-- <h4 style="padding:15px;padding-left:30px">${view.getbTitle() }</h4> --%>
 	<p align="right" class="media-body">
 	글 번호 : ${view.getbNum() }<br />
 	작성일 : ${view.getbCdate() }<br />
 	작성자 : ${view.getbName() }</p>
-	<hr style="width:95%"/>
-	<p align="center" style="margin:100px"><pre>${view.getbContent() }</pre></p>
+	<!-- <hr style="width:95%"/> -->
+	<p style="margin:100px;"><pre><center> ${view.getbContent() } </center></pre></p>
 	<input type="hidden" name="bNum" value="${view.getbNum() }"/>
     </div>
   </div>
-  <hr >
-  <div style="float:right">
+  <div style="float:right;">
   <nav aria-label="Page navigation example" >
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="/webedu/bbs/list.do">목록으로</a></li>
@@ -43,6 +42,8 @@
 </nav>
 </div>
 </form>
+<jsp:include page="reply.jsp" />
 </div>
+
 </body>
 </html>

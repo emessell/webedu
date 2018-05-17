@@ -80,7 +80,8 @@ public class RbbsController extends HttpServlet {
 			break;
 			
 		// 좋아요 나빠요
-		case "/rbbs/goodOrBad":
+		case "/rbbs/good":
+		case "/rbbs/bad":
 			command = new GoodOrBadCmd();
 			command.execute(request, response);
 			break;

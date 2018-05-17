@@ -10,7 +10,7 @@ import com.edu.bbs.dto.RbbsDTO;
 
 class TestRbbsDAO {
 
-	@Test
+	/*@Test
 	void test() {
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
 		RbbsDTO rbbsdto = new RbbsDTO();
@@ -22,8 +22,9 @@ class TestRbbsDAO {
 		rbbsdao.write(rbbsdto);
 		}
 		System.out.println(rbbsdto.toString());
-	}
+	}*/
 	
+	//목록 1~10 가져오기
 /*	@Test
 	void test2() {
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
@@ -36,7 +37,8 @@ class TestRbbsDAO {
 		}
 	}*/
 	
-/*	@Test
+	//수정
+	/*@Test
 	void modify() {
 		ArrayList<RbbsDTO> alist;
 		RbbsDAO rbbsdao = RbbsDAOimpl.getInstance();
