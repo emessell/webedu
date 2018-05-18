@@ -46,6 +46,7 @@ var reReqPage = 1;
 	$(function() {
 		//댓글 수정양식 숨기기
 		$("#modifyDiv").hide();
+		$("#reReplyForm").hide();
 		
 		
 		//댓글 목록 가져오기
@@ -62,17 +63,22 @@ var reReqPage = 1;
 
 			$(".title-dialog").html(rNum);
 			$("#reContent").val(reContent);
+			$("#replyForm").hide();
+			$("#reReplyForm").hide();
 			$("#modifyDiv").show("slow");
+		});
 			
 		//대댓글창 보이기
-		$("#reply").on("click", ".reList #b2", function() {
+		$("#reply").on("click",".reList #b2",function() {
 			var li = $(this).parent();
-			console.log(li);
 			var rNum = li.attr("data-rNum");
-			var reContent = li.text();
+			var reContent = li.attr("data-rContent");
+
 			$(".title-dialog").html(rNum);
 			$("#reContent").val(reContent);
-			$("#modifyDiv").show("slow");
+			$("#replyForm").hide();
+			$("#modifyDiv").hide();
+			$("#reReplyForm").show("slow");
 		});
 			
 		//댓글 작성 클릭시 수행로직
@@ -97,7 +103,7 @@ var reReqPage = 1;
 				}
 			});
 		});
-	});
+	
 
 		
 
@@ -184,7 +190,8 @@ var reReqPage = 1;
 	 	
 		//좋아요
 		$("#reply").on("click","#goodBtn",function() {
-			var li = $(this).parent().parent();
+			alert("조아");
+			var li = $(this).parent();
 			var Rnum = li.attr("data-rNum");
 			$.ajax({
 				type : "POST",
@@ -205,7 +212,8 @@ var reReqPage = 1;
 		
 		//나빠요
 		$("#reply").on("click","#badBtn",function() {
-			var li = $(this).parent().parent();
+			alert("나빠");
+			var li = $(this).parent();
 			var Rnum = li.attr("data-rNum");
 			$.ajax({
 				type : "POST",
@@ -223,7 +231,6 @@ var reReqPage = 1;
 				}
 			});
 		});
-		S
 	});
 
 	//요청 댓글 목록 가져오기
@@ -331,17 +338,23 @@ var reReqPage = 1;
 <body>
 <p></p>
  <br /><hr />
+<div id="replyForm">
 <input type="text" id="writer" style="width:100px;height:27px;margin-top:5%" placeholder="작성자"/> <br />
 <p><textarea  id="replyContent" style="width:90%;height:151px" placeholder="댓글 내용"></textarea>
 <button id="replyBtn" class="page-link" style="margin-top:11%">댓글작성</button></p>
+</div>
+<div id="reReplyForm">
+<input type="text" id="writer" style="width:100px;height:27px;margin-top:5%" placeholder="대댓작성자"/> <br />
+<p><textarea  id="replyContent" style="width:90%;height:151px" placeholder="대댓글 내용"></textarea>
+<button id="replyBtn" class="page-link" style="margin-top:11%">대댓글작성</button></p>
+</div>
 <br />
 <div class="container" id="modifyDiv">
-<span class="title-dialog"></span>번 댓글
+#<span class="title-dialog"></span>번
 	<div class="container">
 		<textarea id="reContent" cols="30" rows="3"></textarea>
 	</div>
 	<div class="pagination" style="float:right;">
-		<button id="reReplyBtn" class="page-link">댓글</button>
 		<button id="reModifyBtn" class="page-link">수정</button>
 		<button id="reDelBtn" class="page-link">삭제</button>
 		<button id="closeBtn" class="page-link">닫기</button>
