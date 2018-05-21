@@ -13,6 +13,7 @@ import com.edu.bbs.cmd.RbbsDeleteCmd;
 import com.edu.bbs.cmd.RbbsListCmd;
 import com.edu.bbs.cmd.RbbsModifyCmd;
 import com.edu.bbs.cmd.RbbsWriteCmd;
+import com.edu.bbs.cmd.RbbsReplyCmd;
 
 /**
  * Servlet implementation class RbbsController
@@ -92,9 +93,9 @@ public class RbbsController extends HttpServlet {
 			command.execute(request, response);
 			break;
 			
-		// 댓글 삭제
+		// 대댓글
 		case "/rbbs/reReply":
-			command = new ReReplyCmd();
+			command = new RbbsReplyCmd();
 			command.execute(request, response);
 			break;
 

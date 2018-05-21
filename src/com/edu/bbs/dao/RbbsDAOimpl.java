@@ -196,7 +196,7 @@ public class RbbsDAOimpl implements RbbsDAO {
 	@Override
 	   public RbbsDTO replyView(int rNum) {
 	      RbbsDTO rbbsdto=null;
-	      String sql = "select rgroup, rstep, rindent from replybbs where rnum = ?";
+	      String sql = "select bnum, rgroup, rstep, rindent from replybbs where rnum = ?";
 
 	      try {
 	         conn = DataBaseUtil.getConnection();
@@ -207,6 +207,7 @@ public class RbbsDAOimpl implements RbbsDAO {
 	         
 	         if(rs.next()) {
 	            rbbsdto = new RbbsDTO();
+	            rbbsdto.setBnum(rs.getInt("bNum"));
 	            rbbsdto.setRgroup(rs.getInt("rGroup"));
 	            rbbsdto.setRstep(rs.getInt("rStep"));
 	            rbbsdto.setRindent(rs.getInt("rindent"));
@@ -234,7 +235,7 @@ public class RbbsDAOimpl implements RbbsDAO {
 	         conn = DataBaseUtil.getConnection();
 	         pstmt = conn.prepareStatement(sql.toString());
 	         
-	         pstmt.setInt(1, rbbsdto.getBnum());
+	         pstmt.setInt(1, rbbsdtoV.getBnum());
 	         pstmt.setString(2, rbbsdto.getRname());
 	         pstmt.setString(3, rbbsdto.getRcontent());
 	         

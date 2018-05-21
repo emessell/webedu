@@ -10,6 +10,7 @@
 <script src="/webedu/public/bootstrap-4.1.0/dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 	#modifyDiv{
 		width:500px; height:200px;
@@ -48,7 +49,6 @@ var reReqPage = 1;
 		$("#modifyDiv").hide();
 		$("#reReplyForm").hide();
 		
-		
 		//댓글 목록 가져오기
 		//replyList();
 		
@@ -72,13 +72,35 @@ var reReqPage = 1;
 		$("#reply").on("click",".reList #b2",function() {
 			var li = $(this).parent();
 			var rNum = li.attr("data-rNum");
-			var reContent = li.attr("data-rContent");
 
-			$(".title-dialog").html(rNum);
-			$("#reContent").val(reContent);
 			$("#replyForm").hide();
 			$("#modifyDiv").hide();
 			$("#reReplyForm").show("slow");
+			
+			//대댓글 작성 클릭시 수행로직
+			$("#reReplyBtn").click(function() {
+				
+				var rewriter = $("#rewriter").val();
+				var rereplyContent = $("#rereplyContent").val();
+				alert(rNum);
+					$.ajax({
+					type : "POST",
+					url : "/webedu/rbbs/reReply",
+					dataType : "text",
+					data : {
+						rNum : rNum,
+						rName : rewriter,
+						rContent : rereplyContent
+					},
+					success : function(result) {
+						alert("대댓글등록성공");
+						replyList(reReqPage);
+					},
+					error : function(e) {
+						console.log("실패" + e)
+					}
+				});
+			});
 		});
 			
 		//댓글 작성 클릭시 수행로직
@@ -104,37 +126,11 @@ var reReqPage = 1;
 			});
 		});
 	
-
 		
-
+		
 		// 댓글 수정창 닫기
 		$("#closeBtn").click(function() {
 			$("#modifyDiv").hide();
-		});
-
-		//댓글 등록
-		$("#replyBtn").click(function() {
-			
-			var writer = $("#writer").val();
-			var replyContent = $("#replyContent").val();
-
-			$.ajax({
-				type : "POST",
-				url : "/webedu/rbbs/write",
-				dataType : "text",
-				data : {
-					bNum : bNum,
-					rName : writer,
-					rContent : replyContent
-				},
-				success : function(result) {
-					alert("댓글 등록 성공");
-					replyList(reReqPage);
-				},
-				error : function(e) {
-					console.log("실패", error)
-				}
-			})
 		});
 
 		//댓글 수정
@@ -247,7 +243,12 @@ var reReqPage = 1;
 					$.each(data.result, function(idx, rec) {
 						console.log(rec);
 						console.log(rec.RNUM);
-						str += "<span><li data-rNum='" + rec.RNUM + "' data-rContent='" + rec.RCONTENT + "' class = 'reList'></span>"
+						var rindent = rec.RINDENT * 50;
+						if (rec.RINDENT==0){
+							$("#b3").hide();
+						}
+						str += "<div style=\"margin-left:"+rindent+"px\">"
+						+ "<span><li data-rNum='" + rec.RNUM + "' data-rContent='" + rec.RCONTENT + "' class = 'reList'></span>"
 						+ "<img src=\"/webedu/img/img_avatar1.png\" alt=\"John Doe\" class=\"mr-3 mt-3 rounded-circle\" style=\"width:60px;\">"
 						+ "<h4>" + rec.RNAME + "  "
 						+ "<small><i>"+rec.RCDATE + "</i></small></h4>"
@@ -258,7 +259,7 @@ var reReqPage = 1;
 						+ "<i class=\"fa fa-thumbs-o-down\"></i>"+" "+rec.RBAD+"</button>"
 						+ "<button id='b1' class=\"btn btn-primary\" style=\"background-color:#007BFF;color:white;float:right;border:0 \">수정</button>"
 						+ "<button id='b2' class=\"btn btn-primary\" style=\"background-color:#007BFF;color:white;float:right;border:0 \">댓글</button>"
-						+ "</li>";
+						+ "</li></div>";
 					});
 					$("#reply").html(str);
 					//페이지 리스트 호출
@@ -344,9 +345,9 @@ var reReqPage = 1;
 <button id="replyBtn" class="page-link" style="margin-top:11%">댓글작성</button></p>
 </div>
 <div id="reReplyForm">
-<input type="text" id="writer" style="width:100px;height:27px;margin-top:5%" placeholder="대댓작성자"/> <br />
-<p><textarea  id="replyContent" style="width:90%;height:151px" placeholder="대댓글 내용"></textarea>
-<button id="replyBtn" class="page-link" style="margin-top:11%">대댓글작성</button></p>
+<input type="text" id="rewriter" style="width:100px;height:27px;margin-top:5%" placeholder="대댓작성자"/> <br />
+<p><textarea  id="rereplyContent" style="width:90%;height:151px" placeholder="대댓글 내용"></textarea>
+<button id="reReplyBtn" class="page-link" style="margin-top:11%">대댓글작성</button></p>
 </div>
 <br />
 <div class="container" id="modifyDiv">
